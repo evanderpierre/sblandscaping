@@ -10,11 +10,13 @@ const FACEBOOK_RECOMMENDATIONS = [
     reviewer: "Lisa Ambrosino",
     quote: "He shows up when he says he will… His prices are fair and reasonable.",
     avatar: "/images/reviewer-avatars/lisa-ambrosino-illustrative.jpg",
+    date: "November 13, 2025",
   },
   {
     reviewer: "IslandGirl Liz",
     quote: "Excellent work ethic and SHOWS UP! … the project exceeded expectations.",
     avatar: "/images/reviewer-avatars/islandgirl-liz-illustrative.jpg",
+    date: "September 2, 2025",
   },
 ];
 
@@ -130,20 +132,18 @@ export function Hero() {
               </a>
             </div>
             <article className={`hero-facebook-card ${reviewVisible ? "is-visible" : ""}`}>
-              <div className="hero-facebook-card-label"><span><FacebookMark size={12} /></span> Facebook Recommendation</div>
               <blockquote>&ldquo;{FACEBOOK_RECOMMENDATIONS[activeReview].quote}&rdquo;</blockquote>
               <div className="hero-facebook-reviewer">
                 <Image
                   src={FACEBOOK_RECOMMENDATIONS[activeReview].avatar}
-                  alt="AI-generated illustrative reviewer avatar"
-                  title="Illustrative avatar — not the reviewer&rsquo;s verified photo"
-                  width={44}
-                  height={44}
+                  alt=""
+                  width={56}
+                  height={56}
                   className="hero-facebook-avatar"
                 />
                 <div>
                   <strong>{FACEBOOK_RECOMMENDATIONS[activeReview].reviewer}</strong>
-                  <span>Recommended on Facebook · Illustrative avatar</span>
+                  <span>{FACEBOOK_RECOMMENDATIONS[activeReview].date}</span>
                 </div>
               </div>
             </article>
@@ -198,7 +198,7 @@ export function Hero() {
         }
         .hero-facebook-heading { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 0 4px; }
         .hero-facebook-heading > div { display: flex; align-items: center; gap: 9px; color: rgba(245,245,242,.72); font-size: 11px; font-weight: 750; letter-spacing: .055em; text-transform: uppercase; }
-        .hero-facebook-mark, .hero-facebook-card-label > span { width: 24px; height: 24px; display: inline-grid; place-items: center; border-radius: 7px; color: #fff; background: #2f9e5a; font-family: Arial, sans-serif; font-size: 16px; font-weight: 800; flex: 0 0 auto; }
+        .hero-facebook-mark { width: 24px; height: 24px; display: inline-grid; place-items: center; border-radius: 7px; color: #fff; background: #2f9e5a; flex: 0 0 auto; }
         .hero-facebook-card {
           position: relative;
           width: 100%;
@@ -214,12 +214,10 @@ export function Hero() {
         }
         .hero-facebook-card.is-visible { opacity: 1; transform: translateY(0); }
         .hero-facebook-card::before { content: ""; position: absolute; left: 0; top: 22px; bottom: 22px; width: 2px; border-radius: 2px; background: rgba(47,158,90,.72); }
-        .hero-facebook-card-label { display: flex; align-items: center; gap: 8px; color: #657068; font-size: 9.5px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
-        .hero-facebook-card-label > span { width: 19px; height: 19px; border-radius: 6px; font-size: 13px; }
-        .hero-facebook-card blockquote { margin: 17px 0 18px; color: #171b18; font-family: var(--font-heading); font-size: 17px; font-style: italic; font-weight: 650; line-height: 1.48; }
+        .hero-facebook-card blockquote { margin: 5px 0 24px; color: #171b18; font-family: var(--font-heading); font-size: 17px; font-style: italic; font-weight: 650; line-height: 1.48; }
         .hero-facebook-reviewer { display: flex; align-items: center; gap: 11px; }
         .hero-facebook-reviewer > div { min-width: 0; display: grid; gap: 3px; }
-        .hero-facebook-avatar { width: 44px; height: 44px; flex: 0 0 auto; border-radius: 50%; object-fit: cover; border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(28,43,34,.14), 0 4px 12px rgba(14,24,18,.14); }
+        .hero-facebook-avatar { width: 56px; height: 56px; display: block; flex: 0 0 auto; border-radius: 50%; object-fit: cover; border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(28,43,34,.14), 0 5px 14px rgba(14,24,18,.14); }
         .hero-facebook-reviewer strong { color: #202622; font-size: 12px; }
         .hero-facebook-reviewer span { color: #758078; font-size: 10px; }
         .hero-facebook-indicators { display: flex; justify-content: center; gap: 6px; height: 4px; }
