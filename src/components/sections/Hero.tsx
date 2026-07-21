@@ -46,7 +46,7 @@ export function Hero() {
         className="hero-content"
       >
         <div style={{ ...t(0), color: "var(--sb-flag-green)", fontSize: 13, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", marginBottom: 18 }}>
-          Woburn-Based Landscaping Company
+          Local &amp; Family-Owned Landscaping Company
         </div>
 
         <h1
@@ -56,11 +56,11 @@ export function Hero() {
             fontSize: "clamp(2.05rem, 4.35vw, 4rem)", lineHeight: 1.08, margin: "0 0 22px", maxWidth: 900,
           }}
         >
-          Landscape Design, Installation &amp; Maintenance in <span style={{ color: "var(--sb-flag-green)" }}>Woburn &amp; Surrounding MA Communities</span>
+          Landscape Design, Installation &amp; Maintenance for <span style={{ color: "var(--sb-flag-green)" }}>Woburn-Area Properties</span>
         </h1>
 
         <p className="hero-subhead" style={{ ...t(180), color: "rgba(245,245,242,0.85)", fontSize: 18, lineHeight: 1.6, maxWidth: 580, margin: "0 0 34px" }}>
-          S.B. Landscaping provides landscape design, plant installs, hardscape, lawn care, cleanups, pruning, sod, and snow removal for residential and commercial properties across Woburn, Stoneham, Wakefield, Saugus, and nearby Massachusetts communities.
+          S.B. Landscaping provides plant installs, hardscape, lawn care, cleanups, pruning, sod, and snow removal for residential and commercial properties across Woburn, Stoneham, Wakefield, Saugus, and nearby communities.
         </p>
 
         <div className="hero-ctas" style={{ ...t(260), display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 30 }}>
@@ -84,9 +84,9 @@ export function Hero() {
             display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0,
           }} className="trust-bar">
             {[
-              { icon: "pin", title: "Woburn-Based", desc: "Local & family owned" },
-              { icon: "check", title: "Family Owned", desc: "Rooted in the community" },
-              { icon: "design", title: "Res. & Commercial", desc: "Homes & businesses" },
+              { icon: "pin", title: "Local & Family Owned", desc: "Rooted in nearby communities" },
+              { icon: "check", title: "Residential & Commercial", desc: "Homes & businesses" },
+              { icon: "design", title: "Design, Install & Maintenance", desc: "Complete landscape care" },
               { icon: "quote", title: "7 AM – 7 PM", desc: "Open seven days a week" },
             ].map((s, i) => (
               <div key={s.title} style={{
