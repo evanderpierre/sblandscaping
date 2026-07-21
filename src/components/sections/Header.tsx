@@ -42,6 +42,17 @@ export function Header() {
         transition: "background 320ms ease, border-color 320ms ease",
       }}
     >
+      <div className="seasonal-banner" role="region" aria-label="Seasonal offer">
+        <div className="seasonal-banner-inner">
+          <span className="seasonal-banner-icon" aria-hidden="true"><Icon name="seasonal" size={14} color="currentColor" /></span>
+          <span className="seasonal-banner-copy seasonal-banner-copy-desktop">Book your fall or winter service early &amp; save 10%</span>
+          <span className="seasonal-banner-copy seasonal-banner-copy-mobile">Fall &amp; winter bookings: save 10%</span>
+          <span className="seasonal-banner-divider" aria-hidden="true" />
+          <a href="#seasonal-offer" className="seasonal-banner-cta">
+            Claim Offer <Icon name="arrow" size={13} color="currentColor" />
+          </a>
+        </div>
+      </div>
       <div
         style={{
           display: "grid", gridTemplateColumns: "1fr auto 1fr", alignItems: "center",
@@ -104,6 +115,48 @@ export function Header() {
         </div>
       </div>
       <style>{`
+        .seasonal-banner {
+          min-height: 38px;
+          display: flex;
+          align-items: center;
+          background: var(--sb-flag-green);
+          color: var(--sb-black);
+          border-bottom: 1px solid rgba(10,10,13,.16);
+          box-shadow: 0 5px 18px rgba(0,0,0,.12);
+        }
+        .seasonal-banner-inner {
+          width: 100%;
+          max-width: 1440px;
+          min-height: 38px;
+          margin: 0 auto;
+          padding: 4px clamp(20px,6vw,96px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 11px;
+          font-size: 12.5px;
+          font-weight: 750;
+          letter-spacing: .015em;
+        }
+        .seasonal-banner-icon { width: 22px; height: 22px; border-radius: 50%; background: rgba(10,10,13,.1); display: grid; place-items: center; flex: 0 0 auto; }
+        .seasonal-banner-copy-mobile { display: none; }
+        .seasonal-banner-divider { width: 3px; height: 3px; border-radius: 50%; background: currentColor; opacity: .48; flex: 0 0 auto; }
+        .seasonal-banner-cta {
+          min-height: 30px;
+          padding: 0 12px;
+          border-radius: 999px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 5px;
+          background: var(--sb-black);
+          color: #fff;
+          font-size: 11.5px;
+          font-weight: 750;
+          white-space: nowrap;
+          transition: transform 220ms ease, background 220ms ease;
+        }
+        .seasonal-banner-cta:hover { color: #fff; background: var(--sb-forest-900); transform: translateY(-1px); }
         .header-link::after { content:''; position:absolute; left:0; right:100%; bottom:-6px; height:1px; background:#fff; transition: right 280ms cubic-bezier(.16,1,.3,1); }
         .header-link:hover { color:#fff; }
         .header-link:hover::after { right:0; }
@@ -112,6 +165,13 @@ export function Header() {
         @media (max-width: 1180px) {
           .header-nav-desktop, .header-cta-desktop { display: none !important; }
           .header-hamburger { display: flex !important; }
+        }
+        @media (max-width: 560px) {
+          .seasonal-banner { min-height: 40px; }
+          .seasonal-banner-inner { min-height: 40px; justify-content: space-between; gap: 8px; padding: 4px 14px; }
+          .seasonal-banner-icon, .seasonal-banner-divider, .seasonal-banner-copy-desktop { display: none; }
+          .seasonal-banner-copy-mobile { display: inline; font-size: 11.5px; line-height: 1.2; }
+          .seasonal-banner-cta { min-height: 32px; padding: 0 10px; font-size: 10.5px; }
         }
         @media (min-width: 1181px) { .header-mobile-panel { display: none; } }
       `}</style>

@@ -5,7 +5,7 @@ import { Reveal, LeafShape, GhostButton, PhotoImg } from "@/components/ui/primit
 
 export function PromoOffer() {
   return (
-    <section style={{ background: "var(--sb-black)", padding: "clamp(48px,7vw,88px) clamp(20px,6vw,96px)", position: "relative", overflow: "hidden" }}>
+    <section id="seasonal-offer" style={{ background: "var(--sb-black)", padding: "clamp(48px,7vw,88px) clamp(20px,6vw,96px)", position: "relative", overflow: "hidden" }}>
       <PhotoImg
         src="/images/google-business/lawn-mowing-fall-stripes-01.jpg"
         alt="Freshly mowed lawn with fall stripes by S.B. Landscaping"

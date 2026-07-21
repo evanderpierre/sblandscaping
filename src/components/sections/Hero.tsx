@@ -41,7 +41,7 @@ export function Hero() {
       <div
         style={{
           position: "relative", zIndex: 3, width: "100%", maxWidth: 1280, margin: "0 auto",
-          padding: "clamp(120px,18vh,180px) clamp(20px,6vw,64px) clamp(56px,8vh,88px)", boxSizing: "border-box",
+          padding: "clamp(152px,20vh,190px) clamp(20px,6vw,64px) clamp(56px,8vh,88px)", boxSizing: "border-box",
         }}
         className="hero-content"
       >
@@ -117,7 +117,7 @@ export function Hero() {
         @keyframes sb-scroll-cue { 0%,100% { transform: scaleY(0.6); opacity:.5; } 50% { transform: scaleY(1); opacity:1; } }
         @media (max-width: 640px) { .hero-real-photo .photo-hover-img { object-position: 18% 58% !important; } }
         @media (max-width: 640px) {
-          .hero-content { padding-top: 108px !important; padding-bottom: 38px !important; }
+          .hero-content { padding-top: 148px !important; padding-bottom: 38px !important; }
           .hero-headline { font-size: clamp(1.85rem, 8.4vw, 2.15rem) !important; line-height: 1.06 !important; margin-bottom: 16px !important; }
           .hero-headline-line { white-space: normal; }
           .hero-subhead { font-size: 15.5px !important; line-height: 1.55 !important; margin-bottom: 22px !important; }
@@ -131,7 +131,7 @@ export function Hero() {
           .hero-scrollcue { display: none !important; }
         }
         @media (max-height: 700px) {
-          .hero-content { padding-top: 108px !important; padding-bottom: 48px !important; }
+          .hero-content { padding-top: 144px !important; padding-bottom: 48px !important; }
           .hero-headline { font-size: clamp(2.1rem, 4.6vw, 3.6rem) !important; margin-bottom: 14px !important; }
           .hero-subhead { font-size: 15.5px !important; margin-bottom: 22px !important; }
           .hero-ctas { margin-bottom: 20px !important; }
