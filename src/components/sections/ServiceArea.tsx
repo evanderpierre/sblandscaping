@@ -173,6 +173,10 @@ export function ServiceArea() {
           .area-map-caption { left: 14px; bottom: 14px; font-size: 10.5px; }
           .map-town-labels { font-size: 14px; }
         }
+        @media (max-width: 360px) {
+          .map-label-lines { opacity: .18; }
+          .map-town-labels text:not(:first-child) { opacity: 0; }
+        }
         @media (prefers-reduced-motion: reduce) { .sa-ping { animation: none; opacity: .35; } }
       `}</style>
     </section>

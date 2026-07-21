@@ -216,7 +216,7 @@ export function Input({ label, placeholder, type = "text", textarea = false, dar
     background: dark ? "var(--surface-glass)" : "#fff",
     color: dark ? "var(--sb-white)" : "var(--text-primary)",
     fontFamily: "var(--font-body)",
-    fontSize: 15,
+    fontSize: 16,
     outline: "none",
     boxSizing: "border-box",
     transition: "border-color 200ms, box-shadow 200ms",
@@ -251,7 +251,7 @@ export function Select({ label, options = [], dark = false, name, required = fal
           background: dark ? "var(--surface-glass)" : "#fff",
           color: dark ? "var(--sb-white)" : "var(--text-primary)",
           fontFamily: "var(--font-body)",
-          fontSize: 15,
+          fontSize: 16,
           outline: "none",
         }}
       >

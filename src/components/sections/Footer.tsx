@@ -12,7 +12,7 @@ const NAV_COLS = [
 
 export function Footer() {
   return (
-    <footer style={{ background: "var(--sb-black)", padding: "80px clamp(20px,6vw,96px) 32px", color: "rgba(245,245,242,0.75)" }}>
+    <footer id="site-footer" style={{ background: "var(--sb-black)", padding: "80px clamp(20px,6vw,96px) 32px", color: "rgba(245,245,242,0.75)" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr 1fr 1fr", gap: 48, paddingBottom: 48, borderBottom: "1px solid rgba(245,245,242,0.12)" }} className="footer-grid">
           <div>
@@ -26,7 +26,7 @@ export function Footer() {
               Local &amp; family owned in Woburn, MA
             </div>
             <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" aria-label="Visit S.B. Landscaping on Facebook" style={{
-              display: "inline-flex", alignItems: "center", justifyContent: "center", width: 38, height: 38,
+              display: "inline-flex", alignItems: "center", justifyContent: "center", width: 44, height: 44,
               borderRadius: "50%", border: "1px solid rgba(245,245,242,0.2)", color: "rgba(245,245,242,0.8)",
             }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0022 12z" /></svg>
@@ -71,7 +71,10 @@ export function Footer() {
         </div>
       </div>
       <style>{`@media (max-width: 880px) { .footer-grid { grid-template-columns: 1fr 1fr !important; row-gap: 32px; } }
-      @media (max-width: 520px) { .footer-grid { grid-template-columns: 1fr !important; } }`}</style>
+      @media (max-width: 520px) {
+        .footer-grid { grid-template-columns: 1fr !important; }
+        .footer-grid a, #contact a { min-height: 44px; display: flex; align-items: center; }
+      }`}</style>
     </footer>
   );
 }

@@ -64,9 +64,11 @@ export function Header() {
         </div>
         <button
           aria-label="Menu"
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
           onClick={() => setOpen((o) => !o)}
           className="header-hamburger"
-          style={{ display: "none", background: "none", border: "none", cursor: "pointer", width: 28, height: 22, flexDirection: "column", justifyContent: "space-between", padding: 0, gridColumn: 3, justifySelf: "end" }}
+          style={{ display: "none", background: "none", border: "none", cursor: "pointer", width: 44, height: 44, flexDirection: "column", justifyContent: "space-between", padding: "11px 8px", gridColumn: 3, justifySelf: "end" }}
         >
           <span style={{ height: 2, background: "#fff", borderRadius: 2, transform: open ? "translateY(9px) rotate(45deg)" : "none", transition: "transform 240ms ease" }} />
           <span style={{ height: 2, background: "#fff", borderRadius: 2, opacity: open ? 0 : 1, transition: "opacity 200ms ease" }} />
@@ -74,6 +76,7 @@ export function Header() {
         </button>
       </div>
       <div
+        id="mobile-navigation"
         style={{
           maxHeight: open ? 420 : 0, overflow: "hidden", transition: "max-height 360ms cubic-bezier(.16,1,.3,1)",
           background: "rgba(10,10,13,0.97)", backdropFilter: "blur(14px)",
@@ -93,7 +96,7 @@ export function Header() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Visit S.B. Landscaping on Facebook"
-            style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8, alignSelf: "center", marginTop: 18, color: "rgba(245,245,242,0.72)", fontSize: 14, fontWeight: 600 }}
+            style={{ display: "inline-flex", minHeight: 44, padding: "10px 8px", alignItems: "center", justifyContent: "center", gap: 8, alignSelf: "center", marginTop: 8, color: "rgba(245,245,242,0.72)", fontSize: 14, fontWeight: 600 }}
           >
             <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0022 12z" /></svg>
             Facebook

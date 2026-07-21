@@ -58,7 +58,7 @@ function FeaturedCard({ s, i }: { s: FeaturedService; i: number }) {
         <div className="ed-head" style={{ color: "#fff", fontSize: 20, marginBottom: 8, lineHeight: 1.18 }}>{s.title}</div>
         <div style={{ color: "rgba(245,245,242,0.82)", fontSize: 13.5, lineHeight: 1.5, marginBottom: 12 }}>{s.desc}</div>
         <a href="#quote" className="service-cta-static" style={{
-          display: "inline-flex", alignItems: "center", gap: 6, color: "var(--sb-flag-green)", fontSize: 12.5, fontWeight: 700, whiteSpace: "nowrap",
+          display: "inline-flex", minHeight: 44, alignItems: "center", gap: 6, color: "var(--sb-flag-green)", fontSize: 12.5, fontWeight: 700, whiteSpace: "nowrap",
         }}>
           Request Quote <Icon name="arrow" size={13} style={{ flexShrink: 0 }} />
         </a>
