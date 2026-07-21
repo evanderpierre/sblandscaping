@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/design-system";
 import { PhotoImg, GhostButton, Reveal, Icon, prefersReduced } from "@/components/ui/primitives";
 
@@ -8,12 +9,22 @@ const FACEBOOK_RECOMMENDATIONS = [
   {
     reviewer: "Lisa Ambrosino",
     quote: "He shows up when he says he will… His prices are fair and reasonable.",
+    avatar: "/images/reviewer-avatars/lisa-ambrosino-illustrative.jpg",
   },
   {
     reviewer: "IslandGirl Liz",
     quote: "Excellent work ethic and SHOWS UP! … the project exceeded expectations.",
+    avatar: "/images/reviewer-avatars/islandgirl-liz-illustrative.jpg",
   },
 ];
+
+function FacebookMark({ size = 14 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.2 2.23.2v2.45h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12Z" />
+    </svg>
+  );
+}
 
 export function Hero() {
   const [show, setShow] = React.useState(false);
@@ -105,7 +116,7 @@ export function Hero() {
           <aside className="hero-facebook-proof" style={{ ...t(310) }} aria-label="Facebook recommendations">
             <div className="hero-facebook-heading">
               <div>
-                <span className="hero-facebook-mark" aria-hidden="true">f</span>
+                <span className="hero-facebook-mark"><FacebookMark size={15} /></span>
                 <span>Recommended on Facebook</span>
               </div>
               <a
@@ -119,9 +130,22 @@ export function Hero() {
               </a>
             </div>
             <article className={`hero-facebook-card ${reviewVisible ? "is-visible" : ""}`}>
-              <div className="hero-facebook-card-label"><span aria-hidden="true">f</span> Facebook Recommendation</div>
+              <div className="hero-facebook-card-label"><span><FacebookMark size={12} /></span> Facebook Recommendation</div>
               <blockquote>&ldquo;{FACEBOOK_RECOMMENDATIONS[activeReview].quote}&rdquo;</blockquote>
-              <div className="hero-facebook-reviewer"><strong>{FACEBOOK_RECOMMENDATIONS[activeReview].reviewer}</strong><span>Recommended on Facebook</span></div>
+              <div className="hero-facebook-reviewer">
+                <Image
+                  src={FACEBOOK_RECOMMENDATIONS[activeReview].avatar}
+                  alt="AI-generated illustrative reviewer avatar"
+                  title="Illustrative avatar — not the reviewer&rsquo;s verified photo"
+                  width={44}
+                  height={44}
+                  className="hero-facebook-avatar"
+                />
+                <div>
+                  <strong>{FACEBOOK_RECOMMENDATIONS[activeReview].reviewer}</strong>
+                  <span>Recommended on Facebook · Illustrative avatar</span>
+                </div>
+              </div>
             </article>
             <div className="hero-facebook-indicators" aria-hidden="true">
               {FACEBOOK_RECOMMENDATIONS.map((review, index) => <span key={review.reviewer} className={index === activeReview ? "is-active" : ""} />)}
@@ -178,7 +202,7 @@ export function Hero() {
         .hero-facebook-card {
           position: relative;
           width: 100%;
-          min-height: 184px;
+          min-height: 218px;
           padding: 23px 24px;
           border: 1px solid rgba(20,30,24,.12);
           border-radius: 18px;
@@ -193,7 +217,9 @@ export function Hero() {
         .hero-facebook-card-label { display: flex; align-items: center; gap: 8px; color: #657068; font-size: 9.5px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
         .hero-facebook-card-label > span { width: 19px; height: 19px; border-radius: 6px; font-size: 13px; }
         .hero-facebook-card blockquote { margin: 17px 0 18px; color: #171b18; font-family: var(--font-heading); font-size: 17px; font-style: italic; font-weight: 650; line-height: 1.48; }
-        .hero-facebook-reviewer { display: grid; gap: 2px; }
+        .hero-facebook-reviewer { display: flex; align-items: center; gap: 11px; }
+        .hero-facebook-reviewer > div { min-width: 0; display: grid; gap: 3px; }
+        .hero-facebook-avatar { width: 44px; height: 44px; flex: 0 0 auto; border-radius: 50%; object-fit: cover; border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(28,43,34,.14), 0 4px 12px rgba(14,24,18,.14); }
         .hero-facebook-reviewer strong { color: #202622; font-size: 12px; }
         .hero-facebook-reviewer span { color: #758078; font-size: 10px; }
         .hero-facebook-indicators { display: flex; justify-content: center; gap: 6px; height: 4px; }
@@ -222,7 +248,7 @@ export function Hero() {
           .hero-facebook-proof { gap: 11px; }
           .hero-facebook-heading { padding: 0 2px; }
           .hero-facebook-heading > div { font-size: 10px; }
-          .hero-facebook-card { width: 100%; min-height: 174px; padding: 19px 20px; }
+          .hero-facebook-card { width: 100%; min-height: 210px; padding: 19px 20px; }
           .hero-facebook-card blockquote { margin: 14px 0 15px; font-size: 15.5px; line-height: 1.46; }
           .trust-bar { grid-template-columns: 1fr 1fr !important; }
           .trust-item { padding: 12px !important; border-left: none !important; border-top: 1px solid rgba(245,245,242,0.1); }
