@@ -86,9 +86,9 @@ export function Hero() {
             fontSize: "clamp(2.05rem, 3.4vw, 3.15rem)", lineHeight: 1.04, margin: "0 0 22px", maxWidth: 680,
           }}
         >
-          <span className="hero-headline-line" style={{ display: "block" }}>Landscape Design &amp; Install Services</span>
+          <span className="hero-headline-line">Landscape Design &amp; Install Services</span>
           {" "}
-          <span className="hero-headline-line" style={{ display: "block", color: "var(--sb-flag-green)" }}>Across Woburn &amp; Nearby Towns</span>
+          <span className="hero-headline-line" style={{ color: "var(--sb-flag-green)" }}>Across Woburn &amp; Nearby Towns</span>
         </h1>
 
         <p className="hero-subhead" style={{ ...t(180), color: "rgba(245,245,242,0.85)", fontSize: 18, lineHeight: 1.6, maxWidth: 580, margin: "0 0 34px" }}>
@@ -158,11 +158,15 @@ export function Hero() {
 
       <style>{`
         .hero-real-photo .photo-hover-img { object-position: 50% 58%; }
-        .hero-headline-line { white-space: nowrap; }
-        .hero-main-grid { display: grid; grid-template-columns: minmax(0, 680px) minmax(360px, 430px); justify-content: space-between; gap: clamp(52px, 6vw, 88px); align-items: center; }
+        .hero-headline { width: 100%; overflow-wrap: anywhere; }
+        .hero-headline-line { white-space: normal; }
+        .hero-main-grid { display: grid; grid-template-columns: minmax(0, 3fr) minmax(360px, 2fr); gap: clamp(48px, 5vw, 76px); align-items: center; }
         .hero-copy-column { min-width: 0; max-width: 680px; }
         .hero-facebook-proof {
           width: 100%;
+          max-width: 430px;
+          min-width: 0;
+          justify-self: end;
           display: flex;
           flex-direction: column;
           gap: 14px;
@@ -198,12 +202,13 @@ export function Hero() {
         .hero-facebook-link { color: #78d79a; font-size: 10.5px; font-weight: 750; white-space: nowrap; transition: color 180ms ease; }
         .hero-facebook-link:hover { color: #a2e8bb; }
         @media (max-width: 1180px) {
-          .hero-main-grid { grid-template-columns: minmax(0, 1fr) minmax(320px, 360px); gap: 32px; }
-          .hero-headline-line { white-space: normal; }
+          .hero-main-grid { grid-template-columns: minmax(0, 3fr) minmax(320px, 2fr); gap: 48px; }
+          .hero-headline { font-size: clamp(2rem, 3.6vw, 2.75rem) !important; }
         }
-        @media (max-width: 820px) {
+        @media (max-width: 1060px) {
           .hero-main-grid { grid-template-columns: 1fr; }
-          .hero-facebook-proof { max-width: 680px; margin-top: 4px; }
+          .hero-copy-column { max-width: 720px; }
+          .hero-facebook-proof { width: min(100%, 520px); max-width: 520px; margin-top: 4px; justify-self: start; }
         }
         @media (max-width: 640px) { .hero-real-photo .photo-hover-img { object-position: 18% 58% !important; } }
         @media (max-width: 640px) {
