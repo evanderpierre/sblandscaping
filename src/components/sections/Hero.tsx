@@ -56,7 +56,9 @@ export function Hero() {
             fontSize: "clamp(2.05rem, 4.35vw, 4rem)", lineHeight: 1.08, margin: "0 0 22px", maxWidth: 900,
           }}
         >
-          Landscape Design, Installation &amp; Maintenance for <span style={{ color: "var(--sb-flag-green)" }}>Woburn-Area Properties</span>
+          <span style={{ display: "block" }}>Landscape Design, Installation &amp; Maintenance</span>
+          {" "}
+          <span style={{ display: "block", color: "var(--sb-flag-green)" }}>Across Woburn &amp; Nearby Towns</span>
         </h1>
 
         <p className="hero-subhead" style={{ ...t(180), color: "rgba(245,245,242,0.85)", fontSize: 18, lineHeight: 1.6, maxWidth: 580, margin: "0 0 34px" }}>
