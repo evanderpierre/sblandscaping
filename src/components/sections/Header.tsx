@@ -48,8 +48,10 @@ export function Header() {
           <span className="seasonal-banner-copy seasonal-banner-copy-desktop">Book your fall or winter service early &amp; save 10%</span>
           <span className="seasonal-banner-copy seasonal-banner-copy-mobile">Fall &amp; winter bookings: save 10%</span>
           <span className="seasonal-banner-divider" aria-hidden="true" />
-          <a href="#seasonal-offer" className="seasonal-banner-cta">
-            Claim Offer <Icon name="arrow" size={13} color="currentColor" />
+          <a href="#seasonal-offer" className="seasonal-banner-cta" aria-label="Claim Offer">
+            <span className="seasonal-banner-cta-desktop">Claim Offer</span>
+            <span className="seasonal-banner-cta-mobile">Claim</span>
+            <Icon name="arrow" size={13} color="currentColor" />
           </a>
         </div>
       </div>
@@ -116,7 +118,7 @@ export function Header() {
       </div>
       <style>{`
         .seasonal-banner {
-          min-height: 38px;
+          min-height: 42px;
           display: flex;
           align-items: center;
           background: #080a09;
@@ -125,38 +127,43 @@ export function Header() {
           box-shadow: inset 0 -1px 0 rgba(245,245,242,.025), 0 4px 16px rgba(0,0,0,.14);
         }
         .seasonal-banner-inner {
-          width: 100%;
-          max-width: 1040px;
-          min-height: 38px;
-          margin: 0 auto;
-          padding: 4px clamp(20px,6vw,96px);
+          width: fit-content;
+          max-width: calc(100% - 28px);
+          min-height: 32px;
+          margin: 4px auto;
+          padding: 2px 9px 2px 10px;
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 12px;
+          gap: 11px;
+          border: 1px solid rgba(51,180,98,.2);
+          border-radius: 999px;
+          background: linear-gradient(180deg, rgba(245,245,242,.055), rgba(245,245,242,.025));
+          box-shadow: inset 0 1px 0 rgba(245,245,242,.045), 0 0 18px rgba(31,164,99,.055);
           font-size: 12px;
           font-weight: 700;
           letter-spacing: .025em;
         }
         .seasonal-banner-icon { width: 16px; height: 22px; color: #4fc47a; display: grid; place-items: center; flex: 0 0 auto; }
-        .seasonal-banner-copy-mobile { display: none; }
+        .seasonal-banner-copy-mobile, .seasonal-banner-cta-mobile { display: none; }
         .seasonal-banner-divider { width: 1px; height: 14px; background: rgba(51,180,98,.42); flex: 0 0 auto; }
         .seasonal-banner-cta {
           min-height: 26px;
-          padding: 0 2px;
+          padding: 0 9px;
           display: inline-flex;
           align-items: center;
           justify-content: center;
           gap: 5px;
-          border-bottom: 1px solid rgba(51,180,98,.52);
-          background: transparent;
+          border: 1px solid rgba(51,180,98,.36);
+          border-radius: 999px;
+          background: rgba(51,180,98,.07);
           color: #67d18d;
           font-size: 11.5px;
           font-weight: 750;
           white-space: nowrap;
           transition: color 220ms ease, border-color 220ms ease;
         }
-        .seasonal-banner-cta:hover { color: #8be0aa; border-color: #8be0aa; }
+        .seasonal-banner-cta:hover { color: #9be5b5; border-color: rgba(112,211,148,.68); background: rgba(51,180,98,.13); }
         .header-link::after { content:''; position:absolute; left:0; right:100%; bottom:-6px; height:1px; background:#fff; transition: right 280ms cubic-bezier(.16,1,.3,1); }
         .header-link:hover { color:#fff; }
         .header-link:hover::after { right:0; }
@@ -167,11 +174,13 @@ export function Header() {
           .header-hamburger { display: flex !important; }
         }
         @media (max-width: 560px) {
-          .seasonal-banner { min-height: 40px; }
-          .seasonal-banner-inner { min-height: 40px; justify-content: space-between; gap: 8px; padding: 4px 14px; }
+          .seasonal-banner { min-height: 42px; }
+          .seasonal-banner-inner { min-height: 34px; width: calc(100% - 20px); max-width: none; justify-content: space-between; gap: 7px; padding: 2px 5px 2px 11px; }
           .seasonal-banner-icon, .seasonal-banner-divider, .seasonal-banner-copy-desktop { display: none; }
           .seasonal-banner-copy-mobile { display: inline; font-size: 11.5px; line-height: 1.2; }
-          .seasonal-banner-cta { min-height: 30px; padding: 0 2px; font-size: 10.5px; }
+          .seasonal-banner-cta-desktop { display: none; }
+          .seasonal-banner-cta-mobile { display: inline; }
+          .seasonal-banner-cta { min-height: 28px; padding: 0 8px; font-size: 10.5px; }
         }
         @media (min-width: 1181px) { .header-mobile-panel { display: none; } }
       `}</style>
