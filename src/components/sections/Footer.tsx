@@ -55,7 +55,18 @@ export function Footer() {
           </a>
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 8, paddingTop: 24, borderTop: "1px solid rgba(245,245,242,0.12)", fontSize: 13, color: "rgba(245,245,242,0.45)" }}>
-          <span>© 2026 S.B. Landscaping. All rights reserved.</span>
+          <span>
+            © 2026 S.B. Landscaping. All rights reserved. Website by{" "}
+            <a
+              href="https://www.evanderpierre.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit Evander Pierre's website"
+              style={{ color: "rgba(245,245,242,0.62)" }}
+            >
+              Evander Pierre
+            </a>.
+          </span>
           <span>SBLandscapingpros.com · Serving Woburn, Stoneham, Wakefield, Saugus &amp; beyond.</span>
         </div>
       </div>
