@@ -69,6 +69,7 @@ export const PHOTO_TONES: Record<string, { url: string; alt: string }> = {
 type PhotoImgProps = {
   q?: string;
   tone?: string;
+  src?: string;
   alt?: string;
   style?: React.CSSProperties;
   className?: string;
@@ -76,10 +77,11 @@ type PhotoImgProps = {
   organic?: boolean;
   focus?: string;
   sharpen?: boolean;
+  priority?: boolean;
   children?: React.ReactNode;
 };
 
-export function PhotoImg({ q, tone, alt, style, className = "", overlay = "none", organic = false, focus = "50% 50%", sharpen = false, children }: PhotoImgProps) {
+export function PhotoImg({ q, tone, src, alt, style, className = "", overlay = "none", organic = false, focus = "50% 50%", sharpen = false, priority = false, children }: PhotoImgProps) {
   const key = tone || (q && q.split(",")[0]) || "forest";
   const t = PHOTO_TONES[key] || PHOTO_TONES.forest;
   return (
@@ -96,9 +98,11 @@ export function PhotoImg({ q, tone, alt, style, className = "", overlay = "none"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={t.url}
+        src={src || t.url}
         alt={alt || t.alt}
-        loading="lazy"
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : undefined}
+        decoding="async"
         className="photo-hover-img"
         style={{
           position: "absolute",

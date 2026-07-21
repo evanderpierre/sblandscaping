@@ -4,16 +4,30 @@ import React from "react";
 import { EyebrowLabel } from "@/components/ui/design-system";
 import { Reveal, PhotoImg, GhostButton, Icon } from "@/components/ui/primitives";
 
-const FEATURED = [
+type FeaturedService = { tone?: string; src?: string; alt?: string; focus?: string; title: string; desc: string };
+
+const FEATURED: FeaturedService[] = [
   { tone: "plant", title: "Garden Design & Plant Install", desc: "Custom garden beds, plant selection, and installations designed to match your property and lifestyle." },
   { tone: "forest", title: "New Landscape Design & Install", desc: "Full outdoor transformations built around your vision, needs, and long-term use of the space." },
   { tone: "hardscape", title: "Hardscape Design & Install", desc: "Walkways, patios, retaining walls, and hardscape features that add structure and curb appeal." },
-  { tone: "trim", title: "Tree and Shrub Trimming & Pruning", desc: "Detailed trimming and pruning to keep properties sharp, healthy, and well maintained." },
+  {
+    src: "/images/google-business/shrub-trimming-boxwood-colonial-01.jpg",
+    alt: "Trimmed boxwood shrubs and clean landscaping by S.B. Landscaping",
+    focus: "50% 55%",
+    title: "Tree and Shrub Trimming & Pruning",
+    desc: "Detailed trimming and pruning to keep properties sharp, healthy, and well maintained.",
+  },
+  {
+    src: "/images/google-business/lawn-mowing-fall-stripes-01.jpg",
+    alt: "Freshly mowed lawn with fall stripes by S.B. Landscaping",
+    focus: "50% 62%",
+    title: "Weekly & Biweekly Landscape Maintenance",
+    desc: "Consistent mowing and property care that keeps lawns clean, striped, and well maintained.",
+  },
+  { tone: "cleanup", title: "Spring & Fall Cleanups", desc: "Seasonal cleanup services that clear leaves and debris and prepare properties for the months ahead." },
 ];
 
 const SECONDARY = [
-  { icon: "lawn", title: "Weekly & Biweekly Maintenance" },
-  { icon: "check", title: "Spring & Fall Cleanups" },
   { icon: "design", title: "Lawn Care & Fertilization" },
   { icon: "plant", title: "Sod Install" },
   { icon: "pin", title: "Snow Removal" },
@@ -29,7 +43,7 @@ function ServicePill({ s }: { s: { icon: string; title: string } }) {
   );
 }
 
-function FeaturedCard({ s, i }: { s: { tone: string; title: string; desc: string }; i: number }) {
+function FeaturedCard({ s, i }: { s: FeaturedService; i: number }) {
   const [show, setShow] = React.useState(false);
   React.useEffect(() => { const t = setTimeout(() => setShow(true), 60 + i * 70); return () => clearTimeout(t); }, [i]);
   return (
@@ -38,7 +52,7 @@ function FeaturedCard({ s, i }: { s: { tone: string; title: string; desc: string
       opacity: show ? 1 : 0, transform: show ? "translateY(0)" : "translateY(24px)",
       transition: "opacity 700ms cubic-bezier(.16,1,.3,1), transform 700ms cubic-bezier(.16,1,.3,1)",
     }}>
-      <PhotoImg tone={s.tone} alt={s.title} sharpen style={{ position: "absolute", inset: 0, height: "100%" }} />
+      <PhotoImg src={s.src} tone={s.tone} alt={s.alt || s.title} focus={s.focus} sharpen style={{ position: "absolute", inset: 0, height: "100%" }} />
       <div className="service-card-overlay" style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(10,10,13,0.08) 0%, rgba(10,10,13,0.12) 28%, rgba(10,10,13,0.55) 58%, rgba(10,10,13,0.94) 100%)", transition: "background 320ms ease" }} />
       <div style={{ position: "absolute", left: 22, right: 22, bottom: 20, textShadow: "0 1px 8px rgba(0,0,0,0.4)" }}>
         <div className="ed-head" style={{ color: "#fff", fontSize: 20, marginBottom: 8, lineHeight: 1.18 }}>{s.title}</div>
@@ -69,7 +83,7 @@ export function Services() {
           </Reveal>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, marginBottom: 36 }} className="featured-grid">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 36 }} className="featured-grid">
           {FEATURED.map((s, i) => <FeaturedCard key={s.title} s={s} i={i} />)}
         </div>
 

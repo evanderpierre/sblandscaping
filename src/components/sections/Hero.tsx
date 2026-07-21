@@ -24,7 +24,15 @@ export function Hero() {
   return (
     <section id="home" style={{ position: "relative", minHeight: "92svh", background: "var(--sb-black)", overflow: "hidden", display: "flex", alignItems: "flex-end" }}>
       <div style={{ position: "absolute", inset: 0, transform: `scale(1.08) translateY(${offset * -1}px)` }}>
-        <PhotoImg tone="hero" focus="50% 62%" sharpen alt="Freshly landscaped residential property with manicured lawn" style={{ height: "100%" }} />
+        <PhotoImg
+          src="/images/google-business/lawn-care-white-colonial-sign-01.jpg"
+          className="hero-real-photo"
+          focus="50% 58%"
+          sharpen
+          priority
+          alt="S.B. Landscaping lawn care project in Woburn with branded yard sign"
+          style={{ height: "100%" }}
+        />
       </div>
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(100deg, rgba(10,10,13,0.82) 0%, rgba(10,10,13,0.5) 42%, rgba(10,10,13,0.22) 68%)" }} />
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(10,10,13,0.15) 0%, rgba(10,10,13,0.25) 38%, rgba(10,10,13,0.9) 92%)" }} />
@@ -101,7 +109,9 @@ export function Hero() {
       </div>
 
       <style>{`
+        .hero-real-photo .photo-hover-img { object-position: 50% 58%; }
         @keyframes sb-scroll-cue { 0%,100% { transform: scaleY(0.6); opacity:.5; } 50% { transform: scaleY(1); opacity:1; } }
+        @media (max-width: 640px) { .hero-real-photo .photo-hover-img { object-position: 18% 58% !important; } }
         @media (max-height: 700px) {
           .hero-content { padding-top: 108px !important; padding-bottom: 48px !important; }
           .hero-headline { font-size: clamp(2.1rem, 4.6vw, 3.6rem) !important; margin-bottom: 14px !important; }

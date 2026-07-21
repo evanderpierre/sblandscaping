@@ -1,13 +1,20 @@
 "use client";
 
 import { EyebrowLabel } from "@/components/ui/design-system";
-import { Reveal, LeafShape, GhostButton } from "@/components/ui/primitives";
+import { Reveal, LeafShape, GhostButton, PhotoImg } from "@/components/ui/primitives";
 
 export function PromoOffer() {
   return (
     <section style={{ background: "var(--sb-black)", padding: "clamp(48px,7vw,88px) clamp(20px,6vw,96px)", position: "relative", overflow: "hidden" }}>
+      <PhotoImg
+        src="/images/google-business/lawn-mowing-fall-stripes-01.jpg"
+        alt="Freshly mowed lawn with fall stripes by S.B. Landscaping"
+        focus="50% 55%"
+        style={{ position: "absolute", inset: 0, height: "100%", opacity: 0.24 }}
+      />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(110deg, rgba(10,10,13,.94), rgba(10,10,13,.76), rgba(10,10,13,.92))" }} />
       <LeafShape size={220} rotate={-25} opacity={0.05} style={{ top: -30, left: -40 }} />
-      <Reveal>
+      <Reveal style={{ position: "relative", zIndex: 1 }}>
         <div style={{
           maxWidth: 1000, margin: "0 auto", border: "1px solid rgba(245,245,242,0.16)", borderRadius: "var(--radius-xl)",
           padding: "clamp(32px,5vw,56px)", textAlign: "center", position: "relative",

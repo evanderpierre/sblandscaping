@@ -4,16 +4,42 @@ import React from "react";
 import { EyebrowLabel } from "@/components/ui/design-system";
 import { Reveal, PhotoImg, ArrowButton, Icon } from "@/components/ui/primitives";
 
-const PROJECTS = [
-  { tag: "Garden Design & Plant Install", title: "Garden Bed Install", loc: "Woburn, MA", tone: "plant" },
-  { tag: "New Landscape Install", title: "Full Property Transformation", loc: "Stoneham, MA", tone: "forest" },
-  { tag: "Tree & Shrub Pruning", title: "Shrub Pruning", loc: "Wakefield, MA", tone: "trim" },
-  { tag: "Hardscape", title: "Walkway & Patio Install", loc: "Saugus, MA", tone: "hardscape" },
-  { tag: "Landscape Maintenance", title: "Clean Edging & Lawn Care", loc: "Woburn, MA", tone: "lawn" },
-  { tag: "Cleanup", title: "Fall Property Cleanup", loc: "Nearby MA Community", tone: "cleanup" },
+type Project = { tag: string; title: string; src?: string; tone?: string; alt: string; focus?: string; loc?: string };
+
+const PROJECTS: Project[] = [
+  {
+    tag: "Lawn Care / Brand",
+    title: "Finished Lawn Care Project",
+    src: "/images/google-business/lawn-care-white-colonial-sign-01.jpg",
+    alt: "S.B. Landscaping lawn care project in Woburn with branded yard sign",
+    focus: "28% 55%",
+  },
+  {
+    tag: "Shrub Trimming / Pruning",
+    title: "Precision Boxwood Trimming",
+    src: "/images/google-business/shrub-trimming-boxwood-colonial-01.jpg",
+    alt: "Trimmed boxwood shrubs and clean landscaping by S.B. Landscaping",
+    focus: "50% 52%",
+  },
+  {
+    tag: "Lawn Maintenance / Fall Care",
+    title: "Fresh Fall Mowing Stripes",
+    src: "/images/google-business/lawn-mowing-fall-stripes-01.jpg",
+    alt: "Freshly mowed lawn with fall stripes by S.B. Landscaping",
+    focus: "50% 58%",
+  },
+  {
+    tag: "Shrub Trimming Detail",
+    title: "Rounded Shrub Pruning",
+    src: "/images/google-business/shrub-trimming-rounded-bush-01.jpg",
+    alt: "Rounded shrub trimming detail by S.B. Landscaping",
+    focus: "50% 48%",
+  },
+  { tag: "Garden Design & Plant Install", title: "Garden Bed Install", loc: "Woburn, MA", tone: "plant", alt: "Garden bed planting and landscape design" },
+  { tag: "Hardscape", title: "Walkway & Patio Install", loc: "Saugus, MA", tone: "hardscape", alt: "Residential hardscape walkway and patio" },
 ];
 
-function ProjectCard({ p }: { p: typeof PROJECTS[number] }) {
+function ProjectCard({ p }: { p: Project }) {
   return (
     <div
       style={{
@@ -24,14 +50,16 @@ function ProjectCard({ p }: { p: typeof PROJECTS[number] }) {
       onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "var(--shadow-card-hover)"; e.currentTarget.style.transform = "translateY(-6px)"; }}
       onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "var(--shadow-sm)"; e.currentTarget.style.transform = "none"; }}
     >
-      <PhotoImg tone={p.tone} alt={p.title} style={{ position: "absolute", inset: 0, height: "100%" }} />
+      <PhotoImg src={p.src} tone={p.tone} alt={p.alt} focus={p.focus} style={{ position: "absolute", inset: 0, height: "100%" }} />
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(10,10,13,0) 45%, rgba(10,10,13,0.82) 100%)" }} />
       <div style={{ position: "absolute", left: 22, bottom: 22, right: 22 }}>
         <div style={{ color: "var(--sb-flag-green)", fontSize: 11.5, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".04em", marginBottom: 8 }}>{p.tag}</div>
         <div className="ed-head" style={{ color: "#fff", fontSize: 22, marginBottom: 8 }}>{p.title}</div>
-        <span style={{ color: "rgba(245,245,242,0.85)", fontSize: 12.5, display: "flex", alignItems: "center", gap: 4 }}>
-          <Icon name="pin" size={13} /> {p.loc}
-        </span>
+        {p.loc && (
+          <span style={{ color: "rgba(245,245,242,0.85)", fontSize: 12.5, display: "flex", alignItems: "center", gap: 4 }}>
+            <Icon name="pin" size={13} /> {p.loc}
+          </span>
+        )}
       </div>
     </div>
   );
