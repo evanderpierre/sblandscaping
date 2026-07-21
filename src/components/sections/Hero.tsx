@@ -53,12 +53,12 @@ export function Hero() {
           className="hero-headline"
           style={{
             ...t(100), color: "#fff", fontFamily: "var(--font-heading)", fontStyle: "italic", fontWeight: 700, letterSpacing: "-0.015em",
-            fontSize: "clamp(2.05rem, 4.35vw, 4rem)", lineHeight: 1.08, margin: "0 0 22px", maxWidth: 900,
+            fontSize: "clamp(2.05rem, 3.4vw, 3.15rem)", lineHeight: 1.04, margin: "0 0 22px", maxWidth: 900,
           }}
         >
-          <span style={{ display: "block" }}>Landscape Design, Installation &amp; Maintenance</span>
+          <span className="hero-headline-line" style={{ display: "block" }}>Landscape Design &amp; Install Services</span>
           {" "}
-          <span style={{ display: "block", color: "var(--sb-flag-green)" }}>Across Woburn &amp; Nearby Towns</span>
+          <span className="hero-headline-line" style={{ display: "block", color: "var(--sb-flag-green)" }}>Across Woburn &amp; Nearby Towns</span>
         </h1>
 
         <p className="hero-subhead" style={{ ...t(180), color: "rgba(245,245,242,0.85)", fontSize: 18, lineHeight: 1.6, maxWidth: 580, margin: "0 0 34px" }}>
@@ -113,11 +113,13 @@ export function Hero() {
 
       <style>{`
         .hero-real-photo .photo-hover-img { object-position: 50% 58%; }
+        .hero-headline-line { white-space: nowrap; }
         @keyframes sb-scroll-cue { 0%,100% { transform: scaleY(0.6); opacity:.5; } 50% { transform: scaleY(1); opacity:1; } }
         @media (max-width: 640px) { .hero-real-photo .photo-hover-img { object-position: 18% 58% !important; } }
         @media (max-width: 640px) {
           .hero-content { padding-top: 108px !important; padding-bottom: 38px !important; }
           .hero-headline { font-size: clamp(1.85rem, 8.4vw, 2.15rem) !important; line-height: 1.06 !important; margin-bottom: 16px !important; }
+          .hero-headline-line { white-space: normal; }
           .hero-subhead { font-size: 15.5px !important; line-height: 1.55 !important; margin-bottom: 22px !important; }
           .hero-ctas { gap: 10px !important; margin-bottom: 20px !important; }
           .hero-ctas > a, .hero-ctas > a > button { width: 100%; }
