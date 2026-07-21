@@ -53,14 +53,14 @@ export function Hero() {
           className="hero-headline"
           style={{
             ...t(100), color: "#fff", fontFamily: "var(--font-heading)", fontStyle: "italic", fontWeight: 700, letterSpacing: "-0.015em",
-            fontSize: "clamp(2.2rem, 4.7vw, 4.3rem)", lineHeight: 1.08, margin: "0 0 22px", maxWidth: 780,
+            fontSize: "clamp(2.05rem, 4.35vw, 4rem)", lineHeight: 1.08, margin: "0 0 22px", maxWidth: 900,
           }}
         >
-          Sleek, reliable landscaping built around <span style={{ color: "var(--sb-flag-green)" }}>your vision</span>
+          Landscape Design, Installation &amp; Maintenance in <span style={{ color: "var(--sb-flag-green)" }}>Woburn &amp; Surrounding MA Communities</span>
         </h1>
 
         <p className="hero-subhead" style={{ ...t(180), color: "rgba(245,245,242,0.85)", fontSize: 18, lineHeight: 1.6, maxWidth: 580, margin: "0 0 34px" }}>
-          S.B. Landscaping provides landscape maintenance, garden design, plant installs, cleanups, pruning, hardscape, sod, snow removal, and full landscape installs for residential and commercial clients across Woburn, Stoneham, Wakefield, Saugus, and beyond.
+          S.B. Landscaping provides landscape design, plant installs, hardscape, lawn care, cleanups, pruning, sod, and snow removal for residential and commercial properties across Woburn, Stoneham, Wakefield, Saugus, and nearby Massachusetts communities.
         </p>
 
         <div className="hero-ctas" style={{ ...t(260), display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 30 }}>
