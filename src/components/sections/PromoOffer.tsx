@@ -10,6 +10,7 @@ export function PromoOffer() {
         src="/images/google-business/lawn-mowing-fall-stripes-01.jpg"
         alt="Freshly mowed lawn with fall stripes by S.B. Landscaping"
         focus="50% 55%"
+        sizes="100vw"
         style={{ position: "absolute", inset: 0, height: "100%", opacity: 0.24 }}
       />
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(110deg, rgba(10,10,13,.94), rgba(10,10,13,.76), rgba(10,10,13,.92))" }} />

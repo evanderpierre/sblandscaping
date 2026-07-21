@@ -17,7 +17,7 @@ export function WhyChooseUs() {
     <section id="why-us" style={{ background: "var(--sb-sage-100)", padding: "var(--section-pad-y) clamp(20px,6vw,96px)" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "minmax(0,0.85fr) minmax(0,1.15fr)", gap: 64, alignItems: "center" }} className="why-grid">
         <Reveal>
-          <PhotoImg tone="hardscape" overlay="soft" alt="Crew installing paver walkway" style={{ height: 520, borderRadius: "var(--radius-xl)" }} />
+          <PhotoImg tone="hardscape" overlay="soft" alt="Residential landscaping with a maintained lawn and walkway" style={{ height: 520, borderRadius: "var(--radius-xl)" }} />
         </Reveal>
         <div>
           <Reveal>

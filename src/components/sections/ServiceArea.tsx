@@ -7,7 +7,7 @@ const AREAS = ["Woburn", "Stoneham", "Wakefield", "Saugus"];
 
 export function ServiceArea() {
   return (
-    <section style={{ background: "var(--sb-white)", padding: "var(--section-pad-y) clamp(20px,6vw,96px)" }}>
+    <section id="service-area" style={{ background: "var(--sb-white)", padding: "var(--section-pad-y) clamp(20px,6vw,96px)" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)", gap: 64, alignItems: "center" }} className="area-grid">
         <Reveal>
           <EyebrowLabel>Service Area</EyebrowLabel>

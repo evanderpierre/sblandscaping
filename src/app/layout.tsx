@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Manrope, Pirata_One } from "next/font/google";
+import { BUSINESS_DESCRIPTION, BUSINESS_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -21,9 +22,52 @@ const pirataOne = Pirata_One({
 });
 
 export const metadata: Metadata = {
-  title: "S.B. Landscaping — Woburn-Based Landscape Design & Install",
-  description:
-    "S.B. Landscaping provides landscape maintenance, garden design, plant installs, cleanups, pruning, hardscape, sod, and snow removal for residential and commercial clients across Woburn, Stoneham, Wakefield, Saugus, and beyond.",
+  metadataBase: new URL(SITE_URL),
+  title: "S.B. Landscaping | Landscaping Services in Woburn, MA",
+  description: BUSINESS_DESCRIPTION,
+  applicationName: BUSINESS_NAME,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "/",
+    siteName: BUSINESS_NAME,
+    title: "S.B. Landscaping | Woburn, MA Landscaping Company",
+    description:
+      "Local landscaping, design, installs, maintenance, pruning, cleanups, hardscape, sod, and snow removal for Woburn and nearby Massachusetts communities.",
+    images: [
+      {
+        url: "/images/google-business/lawn-care-white-colonial-sign-01.jpg",
+        width: 1800,
+        height: 1350,
+        alt: "S.B. Landscaping lawn care project in Woburn with branded yard sign",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "S.B. Landscaping | Woburn, MA Landscaping Company",
+    description:
+      "Landscape design, installs, maintenance, pruning, cleanups, hardscape, sod, and snow removal in Woburn and nearby communities.",
+    images: ["/images/google-business/lawn-care-white-colonial-sign-01.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

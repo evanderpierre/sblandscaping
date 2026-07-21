@@ -7,9 +7,9 @@ import { Reveal, PhotoImg, GhostButton, Icon } from "@/components/ui/primitives"
 type FeaturedService = { tone?: string; src?: string; alt?: string; focus?: string; title: string; desc: string };
 
 const FEATURED: FeaturedService[] = [
-  { tone: "plant", title: "Garden Design & Plant Install", desc: "Custom garden beds, plant selection, and installations designed to match your property and lifestyle." },
-  { tone: "forest", title: "New Landscape Design & Install", desc: "Full outdoor transformations built around your vision, needs, and long-term use of the space." },
-  { tone: "hardscape", title: "Hardscape Design & Install", desc: "Walkways, patios, retaining walls, and hardscape features that add structure and curb appeal." },
+  { tone: "plant", alt: "Landscaped garden bed with red and white flowers", title: "Garden Design & Plant Install", desc: "Custom garden beds, plant selection, and installations designed to match your property and lifestyle." },
+  { tone: "forest", alt: "Landscaper mowing a maintained residential lawn", title: "New Landscape Design & Install", desc: "Full outdoor transformations built around your vision, needs, and long-term use of the space." },
+  { tone: "hardscape", alt: "Residential property with a landscaped walkway and lawn", title: "Hardscape Design & Install", desc: "Walkways, patios, retaining walls, and hardscape features that add structure and curb appeal." },
   {
     src: "/images/google-business/shrub-trimming-boxwood-colonial-01.jpg",
     alt: "Trimmed boxwood shrubs and clean landscaping by S.B. Landscaping",
@@ -24,7 +24,7 @@ const FEATURED: FeaturedService[] = [
     title: "Weekly & Biweekly Landscape Maintenance",
     desc: "Consistent mowing and property care that keeps lawns clean, striped, and well maintained.",
   },
-  { tone: "cleanup", title: "Spring & Fall Cleanups", desc: "Seasonal cleanup services that clear leaves and debris and prepare properties for the months ahead." },
+  { tone: "cleanup", alt: "Landscaper maintaining a residential lawn during seasonal cleanup", title: "Spring & Fall Cleanups", desc: "Seasonal cleanup services that clear leaves and debris and prepare properties for the months ahead." },
 ];
 
 const SECONDARY = [

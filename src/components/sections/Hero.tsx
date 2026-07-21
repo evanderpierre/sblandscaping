@@ -30,6 +30,7 @@ export function Hero() {
           focus="50% 58%"
           sharpen
           priority
+          sizes="100vw"
           alt="S.B. Landscaping lawn care project in Woburn with branded yard sign"
           style={{ height: "100%" }}
         />

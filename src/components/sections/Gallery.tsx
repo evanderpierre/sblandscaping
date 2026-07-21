@@ -50,7 +50,7 @@ function ProjectCard({ p }: { p: Project }) {
       onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "var(--shadow-card-hover)"; e.currentTarget.style.transform = "translateY(-6px)"; }}
       onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "var(--shadow-sm)"; e.currentTarget.style.transform = "none"; }}
     >
-      <PhotoImg src={p.src} tone={p.tone} alt={p.alt} focus={p.focus} style={{ position: "absolute", inset: 0, height: "100%" }} />
+      <PhotoImg src={p.src} tone={p.tone} alt={p.alt} focus={p.focus} sizes="320px" style={{ position: "absolute", inset: 0, height: "100%" }} />
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(10,10,13,0) 45%, rgba(10,10,13,0.82) 100%)" }} />
       <div style={{ position: "absolute", left: 22, bottom: 22, right: 22 }}>
         <div style={{ color: "var(--sb-flag-green)", fontSize: 11.5, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".04em", marginBottom: 8 }}>{p.tag}</div>

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 export const prefersReduced =
   typeof window !== "undefined" &&
@@ -78,10 +79,11 @@ type PhotoImgProps = {
   focus?: string;
   sharpen?: boolean;
   priority?: boolean;
+  sizes?: string;
   children?: React.ReactNode;
 };
 
-export function PhotoImg({ q, tone, src, alt, style, className = "", overlay = "none", organic = false, focus = "50% 50%", sharpen = false, priority = false, children }: PhotoImgProps) {
+export function PhotoImg({ q, tone, src, alt, style, className = "", overlay = "none", organic = false, focus = "50% 50%", sharpen = false, priority = false, sizes = "(max-width: 640px) 100vw, (max-width: 1080px) 50vw, 33vw", children }: PhotoImgProps) {
   const key = tone || (q && q.split(",")[0]) || "forest";
   const t = PHOTO_TONES[key] || PHOTO_TONES.forest;
   return (
@@ -96,25 +98,43 @@ export function PhotoImg({ q, tone, src, alt, style, className = "", overlay = "
       }}
       title={alt || t.alt}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={src || t.url}
-        alt={alt || t.alt}
-        loading={priority ? "eager" : "lazy"}
-        fetchPriority={priority ? "high" : undefined}
-        decoding="async"
-        className="photo-hover-img"
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          objectPosition: focus,
-          display: "block",
-          filter: sharpen ? "contrast(1.1) saturate(1.08)" : undefined,
-        }}
-      />
+      {src ? (
+        <Image
+          src={src}
+          alt={alt || t.alt}
+          fill
+          sizes={sizes}
+          preload={priority}
+          quality={82}
+          className="photo-hover-img"
+          style={{
+            objectFit: "cover",
+            objectPosition: focus,
+            display: "block",
+            filter: sharpen ? "contrast(1.1) saturate(1.08)" : undefined,
+          }}
+        />
+      ) : (
+        // External stock URLs are already width- and quality-constrained at the source.
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={t.url}
+          alt={alt || t.alt}
+          loading="lazy"
+          decoding="async"
+          className="photo-hover-img"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: focus,
+            display: "block",
+            filter: sharpen ? "contrast(1.1) saturate(1.08)" : undefined,
+          }}
+        />
+      )}
       {overlay === "bottom" && <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(10,10,13,0) 42%, rgba(10,10,13,0.8) 100%)" }} />}
       {overlay === "full" && <div style={{ position: "absolute", inset: 0, background: "rgba(10,10,13,0.38)" }} />}
       {overlay === "soft" && <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, rgba(10,10,13,0.15), rgba(10,10,13,0.38))" }} />}

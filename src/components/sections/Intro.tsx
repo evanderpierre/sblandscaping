@@ -24,7 +24,7 @@ export function Intro() {
           </p>
         </Reveal>
         <Reveal delay={120}>
-          <PhotoImg tone="hardscape" overlay="soft" alt="Crew at work on a residential property" style={{ height: 420, borderRadius: "var(--radius-xl)" }} />
+          <PhotoImg tone="hardscape" overlay="soft" alt="Residential property with a landscaped walkway and maintained lawn" style={{ height: 420, borderRadius: "var(--radius-xl)" }} />
         </Reveal>
       </div>
       <style>{`
