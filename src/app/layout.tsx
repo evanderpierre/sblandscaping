@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Manrope, Pirata_One } from "next/font/google";
-import { BUSINESS_DESCRIPTION, BUSINESS_NAME, SITE_URL } from "@/lib/site";
+import { BUSINESS_DESCRIPTION, BUSINESS_NAME, IS_PREVIEW_MODE, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -54,11 +54,11 @@ export const metadata: Metadata = {
     images: ["/images/google-business/lawn-care-white-colonial-sign-01.jpg"],
   },
   robots: {
-    index: true,
-    follow: true,
+    index: !IS_PREVIEW_MODE,
+    follow: !IS_PREVIEW_MODE,
     googleBot: {
-      index: true,
-      follow: true,
+      index: !IS_PREVIEW_MODE,
+      follow: !IS_PREVIEW_MODE,
       "max-image-preview": "large",
       "max-snippet": -1,
       "max-video-preview": -1,
