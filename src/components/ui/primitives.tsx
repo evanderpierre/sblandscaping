@@ -174,6 +174,36 @@ export function Icon({ name, size = 22, color = "currentColor", className, style
   return <svg {...common}>{ICON_PATHS[name] || null}</svg>;
 }
 
+type HeritageAccentProps = {
+  size?: "sm" | "md";
+};
+
+export function HeritageAccent({ size = "md" }: HeritageAccentProps) {
+  const segmentWidth = size === "sm" ? 7 : 9;
+  const height = size === "sm" ? 3 : 4;
+
+  return (
+    <span
+      role="img"
+      aria-label="Italian-American heritage"
+      title="Italian-American heritage"
+      style={{ display: "inline-flex", alignItems: "center", gap: size === "sm" ? 5 : 7, flex: "0 0 auto" }}
+    >
+      <span aria-hidden="true" style={{ display: "inline-flex", height, overflow: "hidden", borderRadius: 999, boxShadow: "0 0 0 1px rgba(245,245,242,.12)" }}>
+        <span style={{ width: segmentWidth, background: "var(--sb-flag-green)" }} />
+        <span style={{ width: segmentWidth, background: "var(--sb-white)" }} />
+        <span style={{ width: segmentWidth, background: "var(--sb-flag-red)" }} />
+      </span>
+      <span aria-hidden="true" style={{ width: 1, height: height + 4, background: "rgba(245,245,242,.2)" }} />
+      <span aria-hidden="true" style={{ display: "inline-flex", height, overflow: "hidden", borderRadius: 999, boxShadow: "0 0 0 1px rgba(245,245,242,.12)" }}>
+        <span style={{ width: segmentWidth, background: "var(--sb-flag-red)" }} />
+        <span style={{ width: segmentWidth, background: "var(--sb-white)" }} />
+        <span style={{ width: segmentWidth, background: "var(--sb-flag-blue)" }} />
+      </span>
+    </span>
+  );
+}
+
 type ArrowButtonProps = {
   dir?: "left" | "right";
   onClick?: () => void;

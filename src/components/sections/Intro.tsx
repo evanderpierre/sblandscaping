@@ -1,7 +1,7 @@
 "use client";
 
 import { Badge } from "@/components/ui/design-system";
-import { Reveal, PhotoImg } from "@/components/ui/primitives";
+import { Reveal, PhotoImg, HeritageAccent } from "@/components/ui/primitives";
 
 export function Intro() {
   return (
@@ -10,11 +10,7 @@ export function Intro() {
         <Reveal>
           <Badge tone="accent">Local &amp; Family Owned</Badge>
           <div style={{ display: "flex", alignItems: "center", gap: 9, margin: "14px 0 22px" }}>
-            <span style={{ display: "inline-flex", width: 26, height: 3, borderRadius: 2, overflow: "hidden" }}>
-              <span style={{ flex: 1, background: "var(--sb-flag-green)" }} />
-              <span style={{ flex: 1, background: "#F5F5F2" }} />
-              <span style={{ flex: 1, background: "#C1443B" }} />
-            </span>
+            <HeritageAccent />
             <span style={{ color: "rgba(245,245,242,0.5)", fontSize: 12, letterSpacing: ".04em" }}>Built from the ground up. Local. Family-owned. Detail-focused.</span>
           </div>
           <h2 className="ed-head" style={{ color: "#fff", fontSize: "clamp(2rem, 3.4vw, 3.1rem)", margin: "0 0 20px", maxWidth: 520 }}>

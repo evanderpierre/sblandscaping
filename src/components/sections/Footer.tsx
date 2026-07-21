@@ -1,6 +1,8 @@
 "use client";
 
-import { Icon } from "@/components/ui/primitives";
+import { HeritageAccent, Icon } from "@/components/ui/primitives";
+
+const FACEBOOK_URL = "https://www.facebook.com/p/SB-Landscaping-61573771418428/";
 
 const NAV_COLS = [
   { title: "Navigation", items: [["Home", "#home"], ["About", "#about"], ["Services", "#services"], ["Projects", "#projects"], ["Contact", "#contact"]] },
@@ -20,14 +22,10 @@ export function Footer() {
               Professional landscape maintenance, garden design, plant installs, cleanups, pruning, hardscape, sod, snow removal, and outdoor property services based in Woburn, MA.
             </p>
             <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12.5, color: "rgba(245,245,242,0.55)", marginBottom: 18 }}>
-              <span style={{ display: "inline-flex", width: 22, height: 3, borderRadius: 2, overflow: "hidden" }}>
-                <span style={{ flex: 1, background: "var(--sb-flag-green)" }} />
-                <span style={{ flex: 1, background: "#F5F5F2" }} />
-                <span style={{ flex: 1, background: "#C1443B" }} />
-              </span>
-              Local &amp; family owned
+              <HeritageAccent size="sm" />
+              Local &amp; family owned in Woburn, MA
             </div>
-            <a href="#" aria-label="Facebook" style={{
+            <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" aria-label="Visit S.B. Landscaping on Facebook" style={{
               display: "inline-flex", alignItems: "center", justifyContent: "center", width: 38, height: 38,
               borderRadius: "50%", border: "1px solid rgba(245,245,242,0.2)", color: "rgba(245,245,242,0.8)",
             }}>
@@ -51,6 +49,10 @@ export function Footer() {
           </a>
           <span style={{ display: "flex", alignItems: "center", gap: 8, color: "rgba(245,245,242,0.85)" }}><Icon name="pin" size={15} /> Woburn, MA</span>
           <span style={{ display: "flex", alignItems: "center", gap: 8, color: "rgba(245,245,242,0.85)" }}><Icon name="quote" size={15} /> 7 AM – 7 PM, seven days a week</span>
+          <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" aria-label="Visit S.B. Landscaping on Facebook" style={{ display: "flex", alignItems: "center", gap: 8, color: "rgba(245,245,242,0.85)" }}>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0022 12z" /></svg>
+            Facebook: S.B. Landscaping
+          </a>
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 8, paddingTop: 24, borderTop: "1px solid rgba(245,245,242,0.12)", fontSize: 13, color: "rgba(245,245,242,0.45)" }}>
           <span>© 2026 S.B. Landscaping. All rights reserved.</span>

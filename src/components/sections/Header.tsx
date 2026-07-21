@@ -4,6 +4,8 @@ import React from "react";
 import { Button } from "@/components/ui/design-system";
 import { Icon, GhostButton } from "@/components/ui/primitives";
 
+const FACEBOOK_URL = "https://www.facebook.com/p/SB-Landscaping-61573771418428/";
+
 function Logo() {
   return (
     <a href="#home" style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -86,6 +88,16 @@ export function Header() {
             <a href="tel:7818541078" style={{ flex: 1 }}><GhostButton size="md" light style={{ width: "100%" }}>Call Now</GhostButton></a>
             <Button variant="accent" size="md" style={{ flex: 1 }} onClick={() => { setOpen(false); document.getElementById("quote")?.scrollIntoView({ behavior: "smooth" }); }}>Request a Quote</Button>
           </div>
+          <a
+            href={FACEBOOK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit S.B. Landscaping on Facebook"
+            style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8, alignSelf: "center", marginTop: 18, color: "rgba(245,245,242,0.72)", fontSize: 14, fontWeight: 600 }}
+          >
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0022 12z" /></svg>
+            Facebook
+          </a>
         </div>
       </div>
       <style>{`
