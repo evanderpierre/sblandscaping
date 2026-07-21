@@ -83,7 +83,7 @@ export function Hero() {
           className="hero-headline"
           style={{
             ...t(100), color: "#fff", fontFamily: "var(--font-heading)", fontStyle: "italic", fontWeight: 700, letterSpacing: "-0.015em",
-            fontSize: "clamp(2.05rem, 3.4vw, 3.15rem)", lineHeight: 1.04, margin: "0 0 22px", maxWidth: 900,
+            fontSize: "clamp(2.05rem, 3.4vw, 3.15rem)", lineHeight: 1.04, margin: "0 0 22px", maxWidth: 680,
           }}
         >
           <span className="hero-headline-line" style={{ display: "block" }}>Landscape Design &amp; Install Services</span>
@@ -100,14 +100,6 @@ export function Hero() {
           <a href="#services"><GhostButton size="lg" light>View Services</GhostButton></a>
         </div>
 
-        <div className="hero-town-pills" style={{ ...t(360), display: "flex", gap: 10, flexWrap: "wrap" }}>
-          {["Woburn", "Stoneham", "Wakefield", "Saugus"].map((a) => (
-            <span key={a} style={{
-              fontSize: 12.5, fontWeight: 600, color: "rgba(245,245,242,0.8)", padding: "6px 14px",
-              border: "1px solid rgba(245,245,242,0.22)", borderRadius: 999,
-            }}>{a}</span>
-          ))}
-        </div>
           </div>
 
           <aside className="hero-facebook-proof" style={{ ...t(310) }} aria-label="Facebook recommendations">
@@ -137,7 +129,7 @@ export function Hero() {
           </aside>
         </div>
 
-        <Reveal delay={80} style={{ marginTop: "clamp(32px,5vh,48px)" }}>
+        <Reveal delay={80} style={{ marginTop: "clamp(26px,4vh,38px)" }}>
           <div style={{
             background: "rgba(245,245,242,0.06)", backdropFilter: "blur(10px)", WebkitBackdropFilter: "blur(10px)",
             border: "1px solid rgba(245,245,242,0.12)", borderRadius: 18,
@@ -150,7 +142,7 @@ export function Hero() {
               { icon: "quote", title: "7 AM – 7 PM", desc: "Open seven days a week" },
             ].map((s, i) => (
               <div key={s.title} style={{
-                padding: "16px 18px", display: "flex", alignItems: "center", gap: 11,
+                padding: "13px 16px", display: "flex", alignItems: "center", gap: 10,
                 borderLeft: i > 0 ? "1px solid rgba(245,245,242,0.1)" : "none",
               }} className="trust-item">
                 <Icon name={s.icon} size={16} color="var(--sb-flag-green)" />
@@ -164,15 +156,11 @@ export function Hero() {
         </Reveal>
       </div>
 
-      <div style={{ ...t(420), position: "absolute", left: "50%", bottom: 18, transform: "translateX(-50%)", zIndex: 3, display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }} className="hero-scrollcue">
-        <span style={{ color: "rgba(245,245,242,0.55)", fontSize: 10.5, fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase" }}>Scroll</span>
-        <div style={{ width: 1, height: 26, background: "linear-gradient(180deg, rgba(245,245,242,0.6), transparent)", animation: prefersReduced ? "none" : "sb-scroll-cue 1.8s ease-in-out infinite" }} />
-      </div>
-
       <style>{`
         .hero-real-photo .photo-hover-img { object-position: 50% 58%; }
         .hero-headline-line { white-space: nowrap; }
-        .hero-main-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(340px, 410px); gap: clamp(42px, 5vw, 76px); align-items: center; }
+        .hero-main-grid { display: grid; grid-template-columns: minmax(0, 680px) minmax(360px, 430px); justify-content: space-between; gap: clamp(52px, 6vw, 88px); align-items: center; }
+        .hero-copy-column { min-width: 0; max-width: 680px; }
         .hero-facebook-proof {
           width: 100%;
           display: flex;
@@ -209,7 +197,7 @@ export function Hero() {
         .hero-facebook-indicators span.is-active { width: 16px; background: #4fc47a; }
         .hero-facebook-link { color: #78d79a; font-size: 10.5px; font-weight: 750; white-space: nowrap; transition: color 180ms ease; }
         .hero-facebook-link:hover { color: #a2e8bb; }
-        @media (max-width: 1080px) {
+        @media (max-width: 1180px) {
           .hero-main-grid { grid-template-columns: minmax(0, 1fr) minmax(320px, 360px); gap: 32px; }
           .hero-headline-line { white-space: normal; }
         }
@@ -217,7 +205,6 @@ export function Hero() {
           .hero-main-grid { grid-template-columns: 1fr; }
           .hero-facebook-proof { max-width: 680px; margin-top: 4px; }
         }
-        @keyframes sb-scroll-cue { 0%,100% { transform: scaleY(0.6); opacity:.5; } 50% { transform: scaleY(1); opacity:1; } }
         @media (max-width: 640px) { .hero-real-photo .photo-hover-img { object-position: 18% 58% !important; } }
         @media (max-width: 640px) {
           .hero-content { padding-top: 148px !important; padding-bottom: 38px !important; }
@@ -232,20 +219,17 @@ export function Hero() {
           .hero-facebook-heading > div { font-size: 10px; }
           .hero-facebook-card { width: 100%; min-height: 174px; padding: 19px 20px; }
           .hero-facebook-card blockquote { margin: 14px 0 15px; font-size: 15.5px; line-height: 1.46; }
-          .hero-town-pills { gap: 7px !important; }
           .trust-bar { grid-template-columns: 1fr 1fr !important; }
           .trust-item { padding: 12px !important; border-left: none !important; border-top: 1px solid rgba(245,245,242,0.1); }
           .trust-item:nth-child(-n+2) { border-top: none; }
           .trust-item:nth-child(even) { border-left: 1px solid rgba(245,245,242,0.1) !important; }
           .trust-item > div > div:last-child { display: none; }
-          .hero-scrollcue { display: none !important; }
         }
         @media (max-height: 700px) {
           .hero-content { padding-top: 144px !important; padding-bottom: 48px !important; }
           .hero-headline { font-size: clamp(2.1rem, 4.6vw, 3.6rem) !important; margin-bottom: 14px !important; }
           .hero-subhead { font-size: 15.5px !important; margin-bottom: 22px !important; }
           .hero-ctas { margin-bottom: 20px !important; }
-          .hero-scrollcue { display: none !important; }
         }
       `}</style>
     </section>
