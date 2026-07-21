@@ -119,10 +119,10 @@ export function Header() {
           min-height: 38px;
           display: flex;
           align-items: center;
-          background: var(--sb-flag-green);
-          color: var(--sb-black);
-          border-bottom: 1px solid rgba(10,10,13,.16);
-          box-shadow: 0 5px 18px rgba(0,0,0,.12);
+          background: linear-gradient(90deg, #0a0a0d 0%, #111b16 50%, #0a0a0d 100%);
+          color: rgba(245,245,242,.9);
+          border-bottom: 1px solid rgba(51,180,98,.3);
+          box-shadow: inset 0 -1px 0 rgba(245,245,242,.025), 0 5px 18px rgba(0,0,0,.12);
         }
         .seasonal-banner-inner {
           width: 100%;
@@ -138,9 +138,9 @@ export function Header() {
           font-weight: 750;
           letter-spacing: .015em;
         }
-        .seasonal-banner-icon { width: 22px; height: 22px; border-radius: 50%; background: rgba(10,10,13,.1); display: grid; place-items: center; flex: 0 0 auto; }
+        .seasonal-banner-icon { width: 22px; height: 22px; border: 1px solid rgba(51,180,98,.25); border-radius: 50%; background: rgba(51,180,98,.1); color: #4fc47a; display: grid; place-items: center; flex: 0 0 auto; }
         .seasonal-banner-copy-mobile { display: none; }
-        .seasonal-banner-divider { width: 3px; height: 3px; border-radius: 50%; background: currentColor; opacity: .48; flex: 0 0 auto; }
+        .seasonal-banner-divider { width: 3px; height: 3px; border-radius: 50%; background: var(--sb-flag-green); opacity: .8; flex: 0 0 auto; }
         .seasonal-banner-cta {
           min-height: 30px;
           padding: 0 12px;
@@ -149,14 +149,15 @@ export function Header() {
           align-items: center;
           justify-content: center;
           gap: 5px;
-          background: var(--sb-black);
-          color: #fff;
+          border: 1px solid rgba(51,180,98,.48);
+          background: rgba(51,180,98,.1);
+          color: #67d18d;
           font-size: 11.5px;
           font-weight: 750;
           white-space: nowrap;
-          transition: transform 220ms ease, background 220ms ease;
+          transition: transform 220ms ease, background 220ms ease, color 220ms ease, border-color 220ms ease;
         }
-        .seasonal-banner-cta:hover { color: #fff; background: var(--sb-forest-900); transform: translateY(-1px); }
+        .seasonal-banner-cta:hover { color: var(--sb-black); background: #58c77f; border-color: #58c77f; transform: translateY(-1px); }
         .header-link::after { content:''; position:absolute; left:0; right:100%; bottom:-6px; height:1px; background:#fff; transition: right 280ms cubic-bezier(.16,1,.3,1); }
         .header-link:hover { color:#fff; }
         .header-link:hover::after { right:0; }
