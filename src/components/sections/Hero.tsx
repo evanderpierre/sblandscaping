@@ -4,9 +4,37 @@ import React from "react";
 import { Button } from "@/components/ui/design-system";
 import { PhotoImg, GhostButton, Reveal, Icon, prefersReduced } from "@/components/ui/primitives";
 
+const FACEBOOK_RECOMMENDATIONS = [
+  {
+    reviewer: "Lisa Ambrosino",
+    quote: "He shows up when he says he will… His prices are fair and reasonable.",
+  },
+  {
+    reviewer: "IslandGirl Liz",
+    quote: "Excellent work ethic and SHOWS UP! … the project exceeded expectations.",
+  },
+];
+
 export function Hero() {
   const [show, setShow] = React.useState(false);
+  const [activeReview, setActiveReview] = React.useState(0);
+  const [reviewVisible, setReviewVisible] = React.useState(true);
   React.useEffect(() => { const t = setTimeout(() => setShow(true), 100); return () => clearTimeout(t); }, []);
+  React.useEffect(() => {
+    if (prefersReduced) return;
+    let transitionTimer: ReturnType<typeof setTimeout>;
+    const rotationTimer = setInterval(() => {
+      setReviewVisible(false);
+      transitionTimer = setTimeout(() => {
+        setActiveReview((current) => (current + 1) % FACEBOOK_RECOMMENDATIONS.length);
+        setReviewVisible(true);
+      }, 360);
+    }, 5600);
+    return () => {
+      clearInterval(rotationTimer);
+      clearTimeout(transitionTimer);
+    };
+  }, []);
   const [offset, setOffset] = React.useState(0);
   React.useEffect(() => {
     if (prefersReduced) return;
@@ -98,16 +126,14 @@ export function Hero() {
                 View on Facebook <span aria-hidden="true">↗</span>
               </a>
             </div>
-            <article className="hero-facebook-card">
+            <article className={`hero-facebook-card ${reviewVisible ? "is-visible" : ""}`}>
               <div className="hero-facebook-card-label"><span aria-hidden="true">f</span> Facebook Recommendation</div>
-              <blockquote>&ldquo;He shows up when he says he will&hellip; His prices are fair and reasonable.&rdquo;</blockquote>
-              <div className="hero-facebook-reviewer"><strong>Lisa Ambrosino</strong><span>Recommended on Facebook</span></div>
+              <blockquote>&ldquo;{FACEBOOK_RECOMMENDATIONS[activeReview].quote}&rdquo;</blockquote>
+              <div className="hero-facebook-reviewer"><strong>{FACEBOOK_RECOMMENDATIONS[activeReview].reviewer}</strong><span>Recommended on Facebook</span></div>
             </article>
-            <article className="hero-facebook-card hero-facebook-card-offset">
-              <div className="hero-facebook-card-label"><span aria-hidden="true">f</span> Facebook Recommendation</div>
-              <blockquote>&ldquo;Excellent work ethic and SHOWS UP! &hellip; the project exceeded expectations.&rdquo;</blockquote>
-              <div className="hero-facebook-reviewer"><strong>IslandGirl Liz</strong><span>Recommended on Facebook</span></div>
-            </article>
+            <div className="hero-facebook-indicators" aria-hidden="true">
+              {FACEBOOK_RECOMMENDATIONS.map((review, index) => <span key={review.reviewer} className={index === activeReview ? "is-active" : ""} />)}
+            </div>
           </aside>
         </div>
 
@@ -159,22 +185,28 @@ export function Hero() {
         .hero-facebook-mark, .hero-facebook-card-label > span { width: 24px; height: 24px; display: inline-grid; place-items: center; border-radius: 7px; color: #fff; background: #2f9e5a; font-family: Arial, sans-serif; font-size: 16px; font-weight: 800; flex: 0 0 auto; }
         .hero-facebook-card {
           position: relative;
-          width: calc(100% - 20px);
-          min-height: 154px;
-          padding: 20px 22px;
+          width: 100%;
+          min-height: 184px;
+          padding: 23px 24px;
           border: 1px solid rgba(20,30,24,.12);
           border-radius: 18px;
           background: #f6f4ed;
           box-shadow: 0 16px 38px rgba(5,10,7,.2), 0 2px 8px rgba(5,10,7,.1);
+          opacity: 0;
+          transform: translateY(3px);
+          transition: opacity 360ms ease, transform 360ms ease;
         }
+        .hero-facebook-card.is-visible { opacity: 1; transform: translateY(0); }
         .hero-facebook-card::before { content: ""; position: absolute; left: 0; top: 22px; bottom: 22px; width: 2px; border-radius: 2px; background: rgba(47,158,90,.72); }
-        .hero-facebook-card-offset { align-self: flex-end; }
         .hero-facebook-card-label { display: flex; align-items: center; gap: 8px; color: #657068; font-size: 9.5px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
         .hero-facebook-card-label > span { width: 19px; height: 19px; border-radius: 6px; font-size: 13px; }
         .hero-facebook-card blockquote { margin: 17px 0 18px; color: #171b18; font-family: var(--font-heading); font-size: 17px; font-style: italic; font-weight: 650; line-height: 1.48; }
         .hero-facebook-reviewer { display: grid; gap: 2px; }
         .hero-facebook-reviewer strong { color: #202622; font-size: 12px; }
         .hero-facebook-reviewer span { color: #758078; font-size: 10px; }
+        .hero-facebook-indicators { display: flex; justify-content: center; gap: 6px; height: 4px; }
+        .hero-facebook-indicators span { width: 4px; height: 4px; border-radius: 999px; background: rgba(245,245,242,.34); transition: width 300ms ease, background 300ms ease; }
+        .hero-facebook-indicators span.is-active { width: 16px; background: #4fc47a; }
         .hero-facebook-link { color: #78d79a; font-size: 10.5px; font-weight: 750; white-space: nowrap; transition: color 180ms ease; }
         .hero-facebook-link:hover { color: #a2e8bb; }
         @media (max-width: 1080px) {
@@ -198,7 +230,7 @@ export function Hero() {
           .hero-facebook-proof { gap: 11px; }
           .hero-facebook-heading { padding: 0 2px; }
           .hero-facebook-heading > div { font-size: 10px; }
-          .hero-facebook-card, .hero-facebook-card-offset { width: 100%; min-height: 0; padding: 17px 18px; align-self: stretch; }
+          .hero-facebook-card { width: 100%; min-height: 174px; padding: 19px 20px; }
           .hero-facebook-card blockquote { margin: 14px 0 15px; font-size: 15.5px; line-height: 1.46; }
           .hero-town-pills { gap: 7px !important; }
           .trust-bar { grid-template-columns: 1fr 1fr !important; }
