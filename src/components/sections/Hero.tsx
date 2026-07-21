@@ -156,26 +156,25 @@ export function Hero() {
         }
         .hero-facebook-heading { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 0 4px; }
         .hero-facebook-heading > div { display: flex; align-items: center; gap: 9px; color: rgba(245,245,242,.72); font-size: 11px; font-weight: 750; letter-spacing: .055em; text-transform: uppercase; }
-        .hero-facebook-mark, .hero-facebook-card-label > span { width: 24px; height: 24px; display: inline-grid; place-items: center; border-radius: 7px; color: #08110c; background: #4fc47a; font-family: Arial, sans-serif; font-size: 16px; font-weight: 800; flex: 0 0 auto; }
+        .hero-facebook-mark, .hero-facebook-card-label > span { width: 24px; height: 24px; display: inline-grid; place-items: center; border-radius: 7px; color: #fff; background: #2f9e5a; font-family: Arial, sans-serif; font-size: 16px; font-weight: 800; flex: 0 0 auto; }
         .hero-facebook-card {
           position: relative;
           width: calc(100% - 20px);
           min-height: 154px;
           padding: 20px 22px;
-          border: 1px solid rgba(245,245,242,.17);
+          border: 1px solid rgba(20,30,24,.12);
           border-radius: 18px;
-          background: linear-gradient(135deg, rgba(15,19,17,.9), rgba(26,34,29,.72));
-          box-shadow: inset 0 1px rgba(255,255,255,.06), 0 18px 44px rgba(0,0,0,.24);
-          backdrop-filter: blur(16px);
+          background: #f6f4ed;
+          box-shadow: 0 16px 38px rgba(5,10,7,.2), 0 2px 8px rgba(5,10,7,.1);
         }
-        .hero-facebook-card::before { content: ""; position: absolute; left: 0; top: 22px; bottom: 22px; width: 2px; border-radius: 2px; background: rgba(79,196,122,.76); box-shadow: 0 0 16px rgba(79,196,122,.24); }
+        .hero-facebook-card::before { content: ""; position: absolute; left: 0; top: 22px; bottom: 22px; width: 2px; border-radius: 2px; background: rgba(47,158,90,.72); }
         .hero-facebook-card-offset { align-self: flex-end; }
-        .hero-facebook-card-label { display: flex; align-items: center; gap: 8px; color: rgba(245,245,242,.55); font-size: 9.5px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+        .hero-facebook-card-label { display: flex; align-items: center; gap: 8px; color: #657068; font-size: 9.5px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
         .hero-facebook-card-label > span { width: 19px; height: 19px; border-radius: 6px; font-size: 13px; }
-        .hero-facebook-card blockquote { margin: 17px 0 18px; color: #fff; font-family: var(--font-heading); font-size: 17px; font-style: italic; font-weight: 600; line-height: 1.48; }
+        .hero-facebook-card blockquote { margin: 17px 0 18px; color: #171b18; font-family: var(--font-heading); font-size: 17px; font-style: italic; font-weight: 650; line-height: 1.48; }
         .hero-facebook-reviewer { display: grid; gap: 2px; }
-        .hero-facebook-reviewer strong { color: rgba(245,245,242,.9); font-size: 12px; }
-        .hero-facebook-reviewer span { color: rgba(245,245,242,.45); font-size: 10px; }
+        .hero-facebook-reviewer strong { color: #202622; font-size: 12px; }
+        .hero-facebook-reviewer span { color: #758078; font-size: 10px; }
         .hero-facebook-link { color: #78d79a; font-size: 10.5px; font-weight: 750; white-space: nowrap; transition: color 180ms ease; }
         .hero-facebook-link:hover { color: #a2e8bb; }
         @media (max-width: 1080px) {
