@@ -45,6 +45,8 @@ export function Hero() {
         }}
         className="hero-content"
       >
+        <div className="hero-main-grid">
+          <div className="hero-copy-column">
         <div style={{ ...t(0), color: "var(--sb-flag-green)", fontSize: 13, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", marginBottom: 18 }}>
           Local &amp; Family-Owned Landscaping Company
         </div>
@@ -70,26 +72,6 @@ export function Hero() {
           <a href="#services"><GhostButton size="lg" light>View Services</GhostButton></a>
         </div>
 
-        <div className="hero-facebook-proof" style={{ ...t(310) }} aria-label="Facebook recommendations">
-          <div className="hero-facebook-label">
-            <span className="hero-facebook-mark" aria-hidden="true">f</span>
-            <span><strong>Facebook</strong><small>2 recommendations</small></span>
-          </div>
-          <div className="hero-facebook-quotes">
-            <blockquote>&ldquo;He shows up when he says he will&hellip; His prices are fair and reasonable.&rdquo;<cite>Lisa Ambrosino</cite></blockquote>
-            <blockquote>&ldquo;Excellent work ethic and SHOWS UP! &hellip; the project exceeded expectations.&rdquo;<cite>IslandGirl Liz</cite></blockquote>
-          </div>
-          <a
-            href="https://www.facebook.com/p/SB-Landscaping-61573771418428/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="View S.B. Landscaping recommendations on Facebook"
-            className="hero-facebook-link"
-          >
-            View on Facebook <span aria-hidden="true">↗</span>
-          </a>
-        </div>
-
         <div className="hero-town-pills" style={{ ...t(360), display: "flex", gap: 10, flexWrap: "wrap" }}>
           {["Woburn", "Stoneham", "Wakefield", "Saugus"].map((a) => (
             <span key={a} style={{
@@ -97,6 +79,36 @@ export function Hero() {
               border: "1px solid rgba(245,245,242,0.22)", borderRadius: 999,
             }}>{a}</span>
           ))}
+        </div>
+          </div>
+
+          <aside className="hero-facebook-proof" style={{ ...t(310) }} aria-label="Facebook recommendations">
+            <div className="hero-facebook-heading">
+              <div>
+                <span className="hero-facebook-mark" aria-hidden="true">f</span>
+                <span>Recommended on Facebook</span>
+              </div>
+              <a
+                href="https://www.facebook.com/p/SB-Landscaping-61573771418428/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View S.B. Landscaping recommendations on Facebook"
+                className="hero-facebook-link"
+              >
+                View on Facebook <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <article className="hero-facebook-card">
+              <div className="hero-facebook-card-label"><span aria-hidden="true">f</span> Facebook Recommendation</div>
+              <blockquote>&ldquo;He shows up when he says he will&hellip; His prices are fair and reasonable.&rdquo;</blockquote>
+              <div className="hero-facebook-reviewer"><strong>Lisa Ambrosino</strong><span>Recommended on Facebook</span></div>
+            </article>
+            <article className="hero-facebook-card hero-facebook-card-offset">
+              <div className="hero-facebook-card-label"><span aria-hidden="true">f</span> Facebook Recommendation</div>
+              <blockquote>&ldquo;Excellent work ethic and SHOWS UP! &hellip; the project exceeded expectations.&rdquo;</blockquote>
+              <div className="hero-facebook-reviewer"><strong>IslandGirl Liz</strong><span>Recommended on Facebook</span></div>
+            </article>
+          </aside>
         </div>
 
         <Reveal delay={80} style={{ marginTop: "clamp(32px,5vh,48px)" }}>
@@ -134,31 +146,46 @@ export function Hero() {
       <style>{`
         .hero-real-photo .photo-hover-img { object-position: 50% 58%; }
         .hero-headline-line { white-space: nowrap; }
+        .hero-main-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(340px, 410px); gap: clamp(42px, 5vw, 76px); align-items: center; }
         .hero-facebook-proof {
-          width: min(100%, 900px);
-          margin: 0 0 18px;
-          padding: 10px 12px;
-          display: grid;
-          grid-template-columns: auto minmax(0, 1fr) auto;
-          align-items: center;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
           gap: 14px;
           color: rgba(245,245,242,.82);
-          background: linear-gradient(105deg, rgba(12,15,13,.82), rgba(20,27,23,.64));
-          border: 1px solid rgba(245,245,242,.14);
-          border-radius: 14px;
-          box-shadow: inset 0 1px rgba(255,255,255,.05), 0 12px 32px rgba(0,0,0,.16);
-          backdrop-filter: blur(12px);
         }
-        .hero-facebook-label { display: flex; align-items: center; gap: 9px; padding-right: 14px; border-right: 1px solid rgba(79,196,122,.28); white-space: nowrap; }
-        .hero-facebook-label > span:last-child { display: grid; gap: 1px; }
-        .hero-facebook-label strong { color: #fff; font-size: 11.5px; letter-spacing: .04em; }
-        .hero-facebook-label small { color: rgba(245,245,242,.52); font-size: 9.5px; }
-        .hero-facebook-mark { width: 23px; height: 23px; display: grid; place-items: center; border-radius: 7px; color: #08110c; background: #4fc47a; font-family: Arial, sans-serif; font-size: 16px; font-weight: 800; }
-        .hero-facebook-quotes { min-width: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-        .hero-facebook-quotes blockquote { min-width: 0; margin: 0; font-size: 10.5px; line-height: 1.4; color: rgba(245,245,242,.77); }
-        .hero-facebook-quotes cite { display: block; margin-top: 2px; color: rgba(245,245,242,.48); font-size: 9.5px; font-style: normal; font-weight: 650; }
+        .hero-facebook-heading { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 0 4px; }
+        .hero-facebook-heading > div { display: flex; align-items: center; gap: 9px; color: rgba(245,245,242,.72); font-size: 11px; font-weight: 750; letter-spacing: .055em; text-transform: uppercase; }
+        .hero-facebook-mark, .hero-facebook-card-label > span { width: 24px; height: 24px; display: inline-grid; place-items: center; border-radius: 7px; color: #08110c; background: #4fc47a; font-family: Arial, sans-serif; font-size: 16px; font-weight: 800; flex: 0 0 auto; }
+        .hero-facebook-card {
+          position: relative;
+          width: calc(100% - 20px);
+          min-height: 154px;
+          padding: 20px 22px;
+          border: 1px solid rgba(245,245,242,.17);
+          border-radius: 18px;
+          background: linear-gradient(135deg, rgba(15,19,17,.9), rgba(26,34,29,.72));
+          box-shadow: inset 0 1px rgba(255,255,255,.06), 0 18px 44px rgba(0,0,0,.24);
+          backdrop-filter: blur(16px);
+        }
+        .hero-facebook-card::before { content: ""; position: absolute; left: 0; top: 22px; bottom: 22px; width: 2px; border-radius: 2px; background: rgba(79,196,122,.76); box-shadow: 0 0 16px rgba(79,196,122,.24); }
+        .hero-facebook-card-offset { align-self: flex-end; }
+        .hero-facebook-card-label { display: flex; align-items: center; gap: 8px; color: rgba(245,245,242,.55); font-size: 9.5px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+        .hero-facebook-card-label > span { width: 19px; height: 19px; border-radius: 6px; font-size: 13px; }
+        .hero-facebook-card blockquote { margin: 17px 0 18px; color: #fff; font-family: var(--font-heading); font-size: 17px; font-style: italic; font-weight: 600; line-height: 1.48; }
+        .hero-facebook-reviewer { display: grid; gap: 2px; }
+        .hero-facebook-reviewer strong { color: rgba(245,245,242,.9); font-size: 12px; }
+        .hero-facebook-reviewer span { color: rgba(245,245,242,.45); font-size: 10px; }
         .hero-facebook-link { color: #78d79a; font-size: 10.5px; font-weight: 750; white-space: nowrap; transition: color 180ms ease; }
         .hero-facebook-link:hover { color: #a2e8bb; }
+        @media (max-width: 1080px) {
+          .hero-main-grid { grid-template-columns: minmax(0, 1fr) minmax(320px, 360px); gap: 32px; }
+          .hero-headline-line { white-space: normal; }
+        }
+        @media (max-width: 820px) {
+          .hero-main-grid { grid-template-columns: 1fr; }
+          .hero-facebook-proof { max-width: 680px; margin-top: 4px; }
+        }
         @keyframes sb-scroll-cue { 0%,100% { transform: scaleY(0.6); opacity:.5; } 50% { transform: scaleY(1); opacity:1; } }
         @media (max-width: 640px) { .hero-real-photo .photo-hover-img { object-position: 18% 58% !important; } }
         @media (max-width: 640px) {
@@ -168,13 +195,12 @@ export function Hero() {
           .hero-subhead { font-size: 15.5px !important; line-height: 1.55 !important; margin-bottom: 22px !important; }
           .hero-ctas { gap: 10px !important; margin-bottom: 20px !important; }
           .hero-ctas > a, .hero-ctas > a > button { width: 100%; }
-          .hero-facebook-proof { grid-template-columns: 1fr auto; gap: 9px; margin-bottom: 16px; padding: 9px 10px; }
-          .hero-facebook-label { padding-right: 0; border-right: 0; }
-          .hero-facebook-label small { display: none; }
-          .hero-facebook-quotes { grid-column: 1 / -1; grid-row: 2; display: block; padding-top: 7px; border-top: 1px solid rgba(245,245,242,.1); }
-          .hero-facebook-quotes blockquote { font-size: 10.5px; }
-          .hero-facebook-quotes blockquote:nth-child(2) { display: none; }
-          .hero-facebook-link { justify-self: end; }
+          .hero-main-grid { gap: 26px; }
+          .hero-facebook-proof { gap: 11px; }
+          .hero-facebook-heading { padding: 0 2px; }
+          .hero-facebook-heading > div { font-size: 10px; }
+          .hero-facebook-card, .hero-facebook-card-offset { width: 100%; min-height: 0; padding: 17px 18px; align-self: stretch; }
+          .hero-facebook-card blockquote { margin: 14px 0 15px; font-size: 15.5px; line-height: 1.46; }
           .hero-town-pills { gap: 7px !important; }
           .trust-bar { grid-template-columns: 1fr 1fr !important; }
           .trust-item { padding: 12px !important; border-left: none !important; border-top: 1px solid rgba(245,245,242,0.1); }

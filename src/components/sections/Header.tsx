@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/design-system";
 import { Icon, GhostButton } from "@/components/ui/primitives";
 
 const FACEBOOK_URL = "https://www.facebook.com/p/SB-Landscaping-61573771418428/";
+// Temporarily disabled. Set to true when the seasonal promotion should return.
+const SHOW_SEASONAL_BANNER = false;
 
 function Logo() {
   return (
@@ -42,7 +44,7 @@ export function Header() {
         transition: "background 320ms ease, border-color 320ms ease",
       }}
     >
-      <div className="seasonal-banner" role="region" aria-label="Seasonal offer">
+      {SHOW_SEASONAL_BANNER && <div className="seasonal-banner" role="region" aria-label="Seasonal offer">
         <div className="seasonal-banner-inner">
           <span className="seasonal-banner-icon" aria-hidden="true"><Icon name="seasonal" size={14} color="currentColor" /></span>
           <span className="seasonal-banner-copy seasonal-banner-copy-desktop">Book your fall or winter service early &amp; save 10%</span>
@@ -54,7 +56,7 @@ export function Header() {
             <Icon name="arrow" size={13} color="currentColor" />
           </a>
         </div>
-      </div>
+      </div>}
       <div
         style={{
           display: "grid", gridTemplateColumns: "1fr auto 1fr", alignItems: "center",
