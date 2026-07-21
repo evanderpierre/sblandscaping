@@ -27,7 +27,7 @@ export function QuoteForm() {
     setError(false);
 
     try {
-      const response = await fetch("/", {
+      const response = await fetch("/__forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: body.toString(),
@@ -65,7 +65,7 @@ export function QuoteForm() {
               <div className="ed-head" style={{ fontSize: 22, margin: "14px 0 8px" }}>Thanks — your quote request has been sent. We&rsquo;ll follow up soon.</div>
             </div>
           ) : (
-            <form name={FORM_NAME} method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={submit} style={{
+            <form name={FORM_NAME} method="POST" onSubmit={submit} style={{
               background: "#fff", border: "1px solid var(--border-default)", borderRadius: "var(--radius-xl)",
               padding: "clamp(24px,4vw,40px)", boxShadow: "var(--shadow-sm)",
               display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20,
