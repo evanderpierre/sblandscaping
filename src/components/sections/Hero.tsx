@@ -198,7 +198,7 @@ export function Hero() {
         }
         .hero-facebook-heading { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 0 4px; }
         .hero-facebook-heading > div { display: flex; align-items: center; gap: 9px; color: rgba(245,245,242,.72); font-size: 11px; font-weight: 750; letter-spacing: .055em; text-transform: uppercase; }
-        .hero-facebook-mark { width: 24px; height: 24px; display: inline-grid; place-items: center; border-radius: 7px; color: #fff; background: #2f9e5a; flex: 0 0 auto; }
+        .hero-facebook-mark { width: 24px; height: 24px; display: inline-grid; place-items: center; border-radius: 7px; color: #fff; background: #216fdb; flex: 0 0 auto; }
         .hero-facebook-card {
           position: relative;
           width: 100%;
