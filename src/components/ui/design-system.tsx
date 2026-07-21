@@ -204,9 +204,10 @@ type InputProps = {
   textarea?: boolean;
   dark?: boolean;
   name?: string;
+  required?: boolean;
 };
 
-export function Input({ label, placeholder, type = "text", textarea = false, dark = false, name }: InputProps) {
+export function Input({ label, placeholder, type = "text", textarea = false, dark = false, name, required = false }: InputProps) {
   const fieldStyle: React.CSSProperties = {
     width: "100%",
     padding: "14px 18px",
@@ -224,22 +225,24 @@ export function Input({ label, placeholder, type = "text", textarea = false, dar
     <label style={{ display: "flex", flexDirection: "column", gap: 8 }}>
       {label && <span style={{ fontSize: 13, fontWeight: 600, color: dark ? "var(--sb-white-70)" : "var(--text-secondary)" }}>{label}</span>}
       {textarea ? (
-        <textarea name={name} rows={4} placeholder={placeholder} style={{ ...fieldStyle, resize: "vertical", fontFamily: "var(--font-body)" }} />
+        <textarea name={name} rows={4} placeholder={placeholder} required={required} style={{ ...fieldStyle, resize: "vertical", fontFamily: "var(--font-body)" }} />
       ) : (
-        <input name={name} type={type} placeholder={placeholder} style={fieldStyle} />
+        <input name={name} type={type} placeholder={placeholder} required={required} style={fieldStyle} />
       )}
     </label>
   );
 }
 
-type SelectProps = { label?: string; options?: string[]; dark?: boolean; name?: string };
+type SelectProps = { label?: string; options?: string[]; dark?: boolean; name?: string; required?: boolean; placeholder?: string };
 
-export function Select({ label, options = [], dark = false, name }: SelectProps) {
+export function Select({ label, options = [], dark = false, name, required = false, placeholder }: SelectProps) {
   return (
     <label style={{ display: "flex", flexDirection: "column", gap: 8 }}>
       {label && <span style={{ fontSize: 13, fontWeight: 600, color: dark ? "var(--sb-white-70)" : "var(--text-secondary)" }}>{label}</span>}
       <select
         name={name}
+        required={required}
+        defaultValue=""
         style={{
           width: "100%",
           padding: "14px 18px",
@@ -252,6 +255,7 @@ export function Select({ label, options = [], dark = false, name }: SelectProps)
           outline: "none",
         }}
       >
+        {placeholder && <option value="" disabled={required}>{placeholder}</option>}
         {options.map((o) => (
           <option key={o}>{o}</option>
         ))}
