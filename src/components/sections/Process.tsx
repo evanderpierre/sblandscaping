@@ -1,68 +1,250 @@
 "use client";
 
-import React from "react";
 import { EyebrowLabel } from "@/components/ui/design-system";
-import { Reveal, prefersReduced } from "@/components/ui/primitives";
+import { Icon, Reveal } from "@/components/ui/primitives";
 
 const STEPS = [
-  { n: "01", title: "Tell us what you need", desc: "Send a message, call, or request a quote." },
-  { n: "02", title: "We review the property", desc: "We confirm the scope, timing, and details." },
-  { n: "03", title: "We complete the work", desc: "Our crew handles the landscaping with care and attention." },
-  { n: "04", title: "You enjoy the finished space", desc: "Your yard looks cleaner, sharper, and better maintained." },
+  {
+    n: "01",
+    icon: "quote",
+    title: "Request a Quote",
+    desc: "Tell us about your property, goals, and the service you need.",
+  },
+  {
+    n: "02",
+    icon: "pin",
+    title: "On-Site Review",
+    desc: "We assess the property, talk through ideas, and confirm scope.",
+  },
+  {
+    n: "03",
+    icon: "design",
+    title: "Plan & Schedule",
+    desc: "We align on the work, timing, and next steps before getting started.",
+  },
+  {
+    n: "04",
+    icon: "check",
+    title: "Complete the Work",
+    desc: "Our crew gets it done with care, detail, and a clean finish.",
+  },
 ];
-
-function ProcessLine() {
-  const ref = React.useRef<SVGSVGElement | null>(null);
-  const [go, setGo] = React.useState(prefersReduced);
-  React.useEffect(() => {
-    if (prefersReduced) return;
-    const el = ref.current; if (!el) return;
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { if (e.isIntersecting) { setGo(true); obs.unobserve(e.target); } });
-    }, { threshold: 0.3 });
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-  return (
-    <svg ref={ref} className="process-line" style={{ position: "absolute", top: 22, left: "12.5%", width: "75%", height: 2, overflow: "visible" }} preserveAspectRatio="none">
-      <line x1="0" y1="1" x2="100%" y2="1" stroke="var(--border-strong)" strokeWidth="1"
-        strokeDasharray="1000" strokeDashoffset={go ? 0 : 1000}
-        style={{ transition: "stroke-dashoffset 1.1s cubic-bezier(.16,1,.3,1) 200ms" }} />
-    </svg>
-  );
-}
 
 export function Process() {
   return (
-    <section style={{ background: "var(--sb-white)", padding: "var(--section-pad-y) clamp(20px,6vw,96px)" }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-        <Reveal>
-          <EyebrowLabel>Our Process</EyebrowLabel>
-          <h2 className="ed-head" style={{ fontSize: "clamp(2rem, 3.4vw, 3.1rem)", margin: "16px 0 56px", maxWidth: 620 }}>
-            A simple process from quote to clean finish.
-          </h2>
+    <section
+      id="process"
+      className="process-section"
+      style={{
+        position: "relative",
+        overflow: "hidden",
+        background: "var(--sb-black)",
+        padding: "var(--section-pad-y) clamp(20px,6vw,96px)",
+      }}
+    >
+      <div className="process-glow" aria-hidden="true" />
+      <div style={{ position: "relative", zIndex: 1, maxWidth: 1280, margin: "0 auto" }}>
+        <Reveal className="process-intro">
+          <div>
+            <EyebrowLabel inverse>Our Process</EyebrowLabel>
+            <h2
+              className="ed-head"
+              style={{
+                color: "#fff",
+                fontSize: "clamp(2.15rem, 3.6vw, 3.35rem)",
+                lineHeight: 1.08,
+                margin: "16px 0 0",
+                maxWidth: 650,
+              }}
+            >
+              A simple process from quote to clean finish.
+            </h2>
+          </div>
+          <p className="process-support">
+            From the first call to the final walkthrough, we keep the process clear, efficient, and built around your property.
+          </p>
         </Reveal>
-        <div style={{ position: "relative", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 32 }} className="process-grid">
-          <ProcessLine />
-          {STEPS.map((s, i) => (
-            <Reveal key={s.n} delay={i * 100} style={{ position: "relative", display: "flex", flexDirection: "column", gap: 16 }}>
-              <div style={{
-                width: 46, height: 46, borderRadius: "50%", background: "var(--sb-black)", color: "#fff",
-                display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 15,
-                position: "relative", zIndex: 1,
-              }}>{s.n}</div>
-              <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 18.5 }}>{s.title}</div>
-              <div style={{ color: "var(--text-secondary)", fontSize: 14.5, lineHeight: 1.55 }}>{s.desc}</div>
+
+        <ol className="process-grid" aria-label="Our four-step landscaping process">
+          {STEPS.map((step, index) => (
+            <Reveal
+              key={step.n}
+              as="li"
+              delay={index * 90}
+              className={`process-card process-card-${index + 1}`}
+            >
+              <div className="process-card-top">
+                <span className="process-number" aria-hidden="true">{step.n}</span>
+                <span className="process-icon" aria-hidden="true">
+                  <Icon name={step.icon} size={21} color="var(--sb-flag-green)" />
+                </span>
+              </div>
+              <div className="process-card-copy">
+                <div className="process-step-label">Step {index + 1}</div>
+                <h3>{step.title}</h3>
+                <p>{step.desc}</p>
+              </div>
+              {index < STEPS.length - 1 && (
+                <span className="process-next" aria-hidden="true">
+                  <Icon name="arrow" size={17} color="rgba(245,245,242,.42)" />
+                </span>
+              )}
             </Reveal>
           ))}
-        </div>
+        </ol>
+
+        <Reveal delay={280} className="process-close">
+          <span className="process-close-mark" aria-hidden="true"><Icon name="check" size={16} color="var(--sb-black)" /></span>
+          <span>A clean, sharp outdoor space built around your needs.</span>
+        </Reveal>
       </div>
+
       <style>{`
-        @media (max-width: 880px) {
-          .process-grid { grid-template-columns: 1fr 1fr !important; row-gap: 40px !important; }
-          .process-line { display: none; }
+        .process-glow {
+          position: absolute;
+          width: 620px;
+          height: 620px;
+          right: -260px;
+          top: -310px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(15, 143, 69, .18), rgba(15, 143, 69, 0) 68%);
+          pointer-events: none;
         }
-        @media (max-width: 520px) { .process-grid { grid-template-columns: 1fr !important; } }
+        .process-intro {
+          display: grid;
+          grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+          align-items: end;
+          gap: clamp(32px, 7vw, 96px);
+          margin-bottom: clamp(48px, 7vw, 84px);
+        }
+        .process-support {
+          color: rgba(245,245,242,.66);
+          font-size: 16px;
+          line-height: 1.7;
+          margin: 0 0 4px;
+          max-width: 450px;
+        }
+        .process-grid {
+          list-style: none;
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 18px;
+          margin: 0;
+          padding: 0;
+        }
+        .process-card {
+          position: relative;
+          min-height: 292px;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          gap: 52px;
+          padding: 24px 24px 28px;
+          border: 1px solid rgba(245,245,242,.13);
+          border-top: 2px solid var(--sb-flag-green);
+          border-radius: 18px;
+          background: linear-gradient(145deg, rgba(245,245,242,.09), rgba(245,245,242,.035));
+          box-shadow: 0 22px 56px rgba(0,0,0,.2);
+          transition: transform 300ms cubic-bezier(.16,1,.3,1), border-color 300ms ease, background 300ms ease;
+        }
+        .process-card:nth-child(even) { transform: translateY(26px) !important; }
+        .process-card:hover {
+          transform: translateY(-7px) !important;
+          border-color: rgba(51,180,98,.48);
+          background: linear-gradient(145deg, rgba(245,245,242,.12), rgba(245,245,242,.055));
+        }
+        .process-card:nth-child(even):hover { transform: translateY(19px) !important; }
+        .process-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+        .process-number {
+          color: rgba(245,245,242,.2);
+          font-family: var(--font-heading);
+          font-size: 46px;
+          font-style: italic;
+          font-weight: 800;
+          line-height: .85;
+          letter-spacing: -.05em;
+        }
+        .process-icon {
+          width: 42px;
+          height: 42px;
+          border: 1px solid rgba(51,180,98,.28);
+          border-radius: 50%;
+          background: rgba(15,143,69,.1);
+          display: grid;
+          place-items: center;
+          flex: 0 0 auto;
+        }
+        .process-step-label {
+          color: var(--sb-flag-green);
+          font-size: 10.5px;
+          font-weight: 800;
+          letter-spacing: .14em;
+          text-transform: uppercase;
+          margin-bottom: 10px;
+        }
+        .process-card h3 {
+          color: #fff;
+          font-family: var(--font-heading);
+          font-size: 20px;
+          font-weight: 750;
+          line-height: 1.2;
+          margin: 0 0 11px;
+        }
+        .process-card p { color: rgba(245,245,242,.62); font-size: 14px; line-height: 1.62; margin: 0; }
+        .process-next {
+          position: absolute;
+          top: 50%;
+          right: -18px;
+          z-index: 2;
+          width: 36px;
+          height: 36px;
+          border: 1px solid rgba(245,245,242,.14);
+          border-radius: 50%;
+          background: var(--sb-black);
+          display: grid;
+          place-items: center;
+          transform: translateY(-50%);
+        }
+        .process-close {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 11px;
+          color: rgba(245,245,242,.72);
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: .015em;
+          margin-top: 70px;
+          text-align: center;
+        }
+        .process-close-mark {
+          width: 27px;
+          height: 27px;
+          border-radius: 50%;
+          background: var(--sb-flag-green);
+          display: grid;
+          place-items: center;
+          flex: 0 0 auto;
+        }
+        @media (max-width: 1000px) {
+          .process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+          .process-card:nth-child(even) { transform: none !important; }
+          .process-card:nth-child(even):hover { transform: translateY(-7px) !important; }
+          .process-next { display: none; }
+          .process-close { margin-top: 46px; }
+        }
+        @media (max-width: 680px) {
+          .process-intro { grid-template-columns: 1fr; gap: 22px; margin-bottom: 38px; }
+          .process-support { font-size: 15px; line-height: 1.65; }
+          .process-grid { grid-template-columns: 1fr; gap: 14px; }
+          .process-card { min-height: 0; gap: 40px; padding: 22px 22px 24px; }
+          .process-number { font-size: 40px; }
+          .process-close { align-items: flex-start; text-align: left; margin-top: 34px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .process-card, .process-card:hover, .process-card:nth-child(even), .process-card:nth-child(even):hover { transform: none !important; transition: none; }
+        }
       `}</style>
     </section>
   );
