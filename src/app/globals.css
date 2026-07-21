@@ -1,26 +1,283 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   S.B. Landscaping — Design tokens
+   ========================================================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ---- Base: Core brand ---- */
+  --sb-black: #0a0a0d;
+  --sb-white: #f5f5f2;
+
+  /* ---- Base: Flag accents (used sparingly, as detail only) ---- */
+  --sb-flag-green: #1fa463;
+  --sb-flag-red: #d93a3a;
+  --sb-flag-blue: #2e5db8;
+
+  /* ---- Base: Extended premium landscape palette ---- */
+  --sb-forest-900: #1e3328;
+  --sb-olive-600: #556b4f;
+  --sb-sage-100: #dde4d6;
+  --sb-stone-200: #d9d7d1;
+  --sb-sand-100: #eae5da;
+
+  /* ---- Base: Derived tints/shades ---- */
+  --sb-forest-950: #14221c;
+  --sb-forest-800: #28402f;
+  --sb-forest-700: #33503b;
+  --sb-black-90: #0f0f13;
+  --sb-black-80: #17171c;
+  --sb-black-70: #202027;
+  --sb-white-70: rgba(245, 245, 242, 0.7);
+  --sb-white-40: rgba(245, 245, 242, 0.4);
+  --sb-white-12: rgba(245, 245, 242, 0.12);
+  --sb-black-40: rgba(10, 10, 13, 0.4);
+  --sb-black-12: rgba(10, 10, 13, 0.12);
+
+  /* Surfaces */
+  --surface-page: var(--sb-white);
+  --surface-page-dark: var(--sb-black);
+  --surface-section-alt: var(--sb-sand-100);
+  --surface-section-forest: var(--sb-forest-900);
+  --surface-card: #ffffff;
+  --surface-card-dark: var(--sb-black-80);
+  --surface-sunken: var(--sb-sage-100);
+  --surface-overlay: rgba(10, 10, 13, 0.55);
+  --surface-glass: rgba(245, 245, 242, 0.08);
+  --surface-glass-border: rgba(245, 245, 242, 0.16);
+
+  /* Text */
+  --text-primary: var(--sb-black);
+  --text-primary-inverse: var(--sb-white);
+  --text-secondary: #4a4a46;
+  --text-secondary-inverse: var(--sb-white-70);
+  --text-muted: #7a7a73;
+  --text-muted-inverse: var(--sb-white-40);
+  --text-link: var(--sb-forest-900);
+  --text-link-hover: var(--sb-flag-green);
+
+  /* Brand / accent */
+  --accent-primary: var(--sb-flag-green);
+  --accent-primary-hover: #1b8f57;
+  --accent-forest: var(--sb-forest-900);
+  --accent-olive: var(--sb-olive-600);
+  --accent-red: var(--sb-flag-red);
+  --accent-blue: var(--sb-flag-blue);
+
+  /* Borders */
+  --border-subtle: var(--sb-stone-200);
+  --border-default: rgba(10, 10, 13, 0.14);
+  --border-strong: var(--sb-black);
+  --border-inverse: rgba(245, 245, 242, 0.18);
+
+  /* Buttons */
+  --button-primary-bg: var(--sb-black);
+  --button-primary-bg-hover: var(--sb-forest-900);
+  --button-primary-fg: var(--sb-white);
+  --button-secondary-bg: transparent;
+  --button-secondary-fg: var(--sb-black);
+  --button-secondary-border: var(--sb-black);
+  --button-accent-bg: var(--sb-flag-green);
+  --button-accent-bg-hover: var(--accent-primary-hover);
+  --button-accent-fg: var(--sb-black);
+  --button-inverse-bg: var(--sb-white);
+  --button-inverse-fg: var(--sb-black);
+
+  /* Status */
+  --status-success: var(--sb-flag-green);
+  --status-error: var(--sb-flag-red);
+  --status-info: var(--sb-flag-blue);
+
+  /* Focus */
+  --focus-ring: var(--sb-flag-blue);
+
+  /* ---- Font families ---- */
+  --font-body: var(--font-primary), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-heading: var(--font-display), var(--font-primary), -apple-system, sans-serif;
+  --font-blackletter: var(--font-accent-blackletter), serif;
+
+  /* ---- Display / headline scale ---- */
+  --text-display-xl-size: clamp(3rem, 5.5vw, 5.75rem);
+  --text-display-lg-size: clamp(2.5rem, 4.2vw, 4.25rem);
+  --text-display-md-size: clamp(2rem, 3.2vw, 3.125rem);
+  --text-display-sm-size: clamp(1.5rem, 2.2vw, 2.25rem);
+  --text-display-weight: 700;
+  --text-display-xl-leading: 1.02;
+  --text-display-lg-leading: 1.05;
+  --text-display-md-leading: 1.08;
+  --text-display-sm-leading: 1.15;
+
+  /* ---- Body / UI scale ---- */
+  --text-body-lg-size: 1.25rem;
+  --text-body-md-size: 1.0625rem;
+  --text-body-sm-size: 0.9375rem;
+  --text-caption-size: 0.8125rem;
+  --text-body-leading: 1.6;
+  --text-body-weight: 400;
+  --text-caption-weight: 500;
+
+  /* ---- UI labels ---- */
+  --text-label-lg-size: 1rem;
+  --text-label-md-size: 0.875rem;
+  --text-eyebrow-size: 0.8125rem;
+  --text-label-weight: 600;
+
+  /* ---- Tracking ---- */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.06em;
+  --tracking-eyebrow: 0.14em;
+
+  /* ---- Spacing scale (4px base) ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+  --space-40: 160px;
+
+  /* ---- Section rhythm ---- */
+  --section-pad-y: clamp(64px, 9vw, 160px);
+  --section-pad-x: clamp(24px, 6vw, 96px);
+  --content-max-width: 1280px;
+
+  /* ---- Radius ---- */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* ---- Shadow ---- */
+  --shadow-sm: 0 1px 2px rgba(10, 10, 13, 0.06), 0 1px 1px rgba(10, 10, 13, 0.04);
+  --shadow-md: 0 8px 24px rgba(10, 10, 13, 0.1), 0 2px 6px rgba(10, 10, 13, 0.06);
+  --shadow-lg: 0 24px 56px rgba(10, 10, 13, 0.16), 0 8px 20px rgba(10, 10, 13, 0.08);
+  --shadow-card-hover: 0 32px 64px rgba(10, 10, 13, 0.2), 0 12px 24px rgba(10, 10, 13, 0.1);
+  --shadow-inset-line: inset 0 1px 0 rgba(245, 245, 242, 0.06);
+
+  /* ---- Motion ---- */
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 180ms;
+  --duration-base: 320ms;
+  --duration-slow: 600ms;
+  --duration-reveal: 900ms;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  font-size: var(--text-body-md-size);
+  font-weight: var(--text-body-weight);
+  line-height: var(--text-body-leading);
+  color: var(--text-primary);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--sb-flag-green);
+  color: #0a0a0d;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: var(--text-display-weight);
+}
+
+h1 {
+  font-size: var(--text-display-lg-size);
+  line-height: var(--text-display-lg-leading);
+  letter-spacing: var(--tracking-tight);
+}
+
+h2 {
+  font-size: var(--text-display-md-size);
+  line-height: var(--text-display-md-leading);
+  letter-spacing: var(--tracking-tight);
+}
+
+h3 {
+  font-size: var(--text-display-sm-size);
+  line-height: var(--text-display-sm-leading);
+}
+
+a {
+  color: var(--text-link);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--text-link-hover);
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-eyebrow-size);
+  font-weight: var(--text-label-weight);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 18px;
+  height: 1.5px;
+  background: currentColor;
+  display: inline-block;
+}
+
+.brand-accent {
+  font-family: var(--font-blackletter);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.ed-head {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.photo-hover-img {
+  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.photo-hover:hover .photo-hover-img {
+  transform: scale(1.06);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
