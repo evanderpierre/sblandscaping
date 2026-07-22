@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/design-system";
 import { Icon, GhostButton } from "@/components/ui/primitives";
 
@@ -11,8 +12,15 @@ const SHOW_SEASONAL_BANNER = false;
 function Logo() {
   return (
     <a href="#home" style={{ display: "flex", alignItems: "center", gap: 12 }}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/logo/sb-logo-mark.png" alt="S.B. Landscaping" style={{ height: 54, width: "auto", display: "block", filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.4))" }} />
+      <Image
+        src="/logo/sb-logo-mark-header.png"
+        alt="S.B. Landscaping"
+        width={242}
+        height={150}
+        sizes="88px"
+        priority
+        style={{ height: 54, width: "auto", display: "block", filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.4))" }}
+      />
     </a>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { HeritageAccent, Icon } from "@/components/ui/primitives";
 
 const FACEBOOK_URL = "https://www.facebook.com/p/SB-Landscaping-61573771418428/";
@@ -16,8 +17,7 @@ export function Footer() {
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr 1fr 1fr", gap: 48, paddingBottom: 48, borderBottom: "1px solid rgba(245,245,242,0.12)" }} className="footer-grid">
           <div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo/sb-logo-mark.png" alt="S.B. Landscaping" style={{ height: 40, width: "auto", display: "block", marginBottom: 16 }} />
+            <Image src="/logo/sb-logo-mark-header.png" alt="S.B. Landscaping" width={242} height={150} sizes="65px" style={{ height: 40, width: "auto", display: "block", marginBottom: 16 }} />
             <p style={{ fontSize: 14, lineHeight: 1.65, maxWidth: 300, marginBottom: 14 }}>
               Professional landscape maintenance, garden design, plant installs, cleanups, pruning, hardscape, sod, snow removal, and outdoor property services based in Woburn, MA.
             </p>
