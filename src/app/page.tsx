@@ -4,6 +4,7 @@ import { Intro } from "@/components/sections/Intro";
 import { PainPoint } from "@/components/sections/PainPoint";
 import { Services } from "@/components/sections/Services";
 import { Gallery } from "@/components/sections/Gallery";
+import { RecentWorkVideos } from "@/components/sections/RecentWorkVideos";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { Process } from "@/components/sections/Process";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -77,6 +78,7 @@ export default function Home() {
       <PainPoint />
       <Services />
       <Gallery />
+      <RecentWorkVideos />
       <WhyChooseUs />
       <Process />
       <Testimonials />

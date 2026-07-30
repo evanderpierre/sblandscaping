@@ -10,8 +10,6 @@ type Project = {
   src: string;
   alt: string;
   focus?: string;
-  poster?: string;
-  mediaType?: "photo" | "video";
 };
 
 const PROJECTS: Project[] = [
@@ -85,30 +83,6 @@ const PROJECTS: Project[] = [
     alt: "Fresh mulch beds and maintained shrubs with S.B. Landscaping yard sign",
     focus: "50% 55%",
   },
-  {
-    tag: "Recent Work · Video",
-    title: "Plant Installation in Progress",
-    src: "/images/client-media/videos/optimized/plant-installation-in-progress-01.mp4",
-    poster: "/images/client-media/videos/posters/plant-installation-in-progress-01.webp",
-    alt: "Video of the S.B. Landscaping crew installing hostas in a garden bed",
-    mediaType: "video",
-  },
-  {
-    tag: "Recent Work · Video",
-    title: "Finished Shrub Trimming",
-    src: "/images/client-media/videos/optimized/shrub-trimming-finished-01.mp4",
-    poster: "/images/client-media/videos/posters/shrub-trimming-finished-01.webp",
-    alt: "Video walkthrough of shaped shrubs and maintained lawn by S.B. Landscaping",
-    mediaType: "video",
-  },
-  {
-    tag: "Recent Work · Video",
-    title: "Shrub Trimming in Action",
-    src: "/images/client-media/videos/optimized/shrub-trimming-in-progress-01.mp4",
-    poster: "/images/client-media/videos/posters/shrub-trimming-in-progress-01.webp",
-    alt: "Video of S.B. Landscaping trimming and shaping an evergreen shrub",
-    mediaType: "video",
-  },
 ];
 
 function ProjectCard({ p }: { p: Project }) {
@@ -122,25 +96,11 @@ function ProjectCard({ p }: { p: Project }) {
       onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "var(--shadow-card-hover)"; e.currentTarget.style.transform = "translateY(-6px)"; }}
       onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "var(--shadow-sm)"; e.currentTarget.style.transform = "none"; }}
     >
-      {p.mediaType === "video" ? (
-        <video
-          controls
-          preload="none"
-          playsInline
-          poster={p.poster}
-          aria-label={p.alt}
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", background: "#101411" }}
-        >
-          <source src={p.src} type="video/mp4" />
-        </video>
-      ) : (
-        <PhotoImg src={p.src} alt={p.alt} focus={p.focus} sizes="320px" style={{ position: "absolute", inset: 0, height: "100%" }} />
-      )}
+      <PhotoImg src={p.src} alt={p.alt} focus={p.focus} sizes="320px" style={{ position: "absolute", inset: 0, height: "100%" }} />
       <div style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "linear-gradient(180deg, rgba(10,10,13,0) 45%, rgba(10,10,13,0.82) 100%)" }} />
-      <div style={{ position: "absolute", left: 22, bottom: p.mediaType === "video" ? 58 : 22, right: 22, pointerEvents: "none" }}>
+      <div style={{ position: "absolute", left: 22, bottom: 22, right: 22, pointerEvents: "none" }}>
         <div style={{ color: "var(--sb-flag-green)", fontSize: 11.5, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".04em", marginBottom: 8 }}>{p.tag}</div>
         <div className="ed-head" style={{ color: "#fff", fontSize: 22, marginBottom: 8 }}>{p.title}</div>
-        {p.mediaType === "video" && <span className="project-video-note">Click to play · Sound off by default</span>}
       </div>
     </div>
   );
@@ -171,9 +131,6 @@ export function Gallery() {
       }}>
         {PROJECTS.map((p) => <ProjectCard key={p.title} p={p} />)}
       </div>
-      <style>{`
-        .project-video-note { color: rgba(245,245,242,.72); font-size: 10.5px; font-weight: 600; }
-      `}</style>
     </section>
   );
 }
