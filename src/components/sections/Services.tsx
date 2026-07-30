@@ -7,7 +7,13 @@ import { Reveal, PhotoImg, GhostButton, Icon } from "@/components/ui/primitives"
 type FeaturedService = { tone?: string; src?: string; alt?: string; focus?: string; title: string; desc: string };
 
 const FEATURED: FeaturedService[] = [
-  { tone: "plant", alt: "Landscaped garden bed with red and white flowers", title: "Garden Design & Plant Install", desc: "Custom garden beds, plant selection, and installations designed to match your property and lifestyle." },
+  {
+    src: "/images/client-media/photos/optimized/garden-bed-planting-01.webp",
+    alt: "Newly arranged hosta planting bed installed by S.B. Landscaping",
+    focus: "50% 60%",
+    title: "Garden Design & Plant Install",
+    desc: "Custom garden beds, plant selection, and installations designed to match your property and lifestyle.",
+  },
   { tone: "forest", alt: "Landscaper mowing a maintained residential lawn", title: "New Landscape Design & Install", desc: "Full outdoor transformations built around your vision, needs, and long-term use of the space." },
   { tone: "hardscape", alt: "Residential property with a landscaped walkway and lawn", title: "Hardscape Design & Install", desc: "Walkways, patios, retaining walls, and hardscape features that add structure and curb appeal." },
   {
@@ -18,9 +24,9 @@ const FEATURED: FeaturedService[] = [
     desc: "Detailed trimming and pruning to keep properties sharp, healthy, and well maintained.",
   },
   {
-    src: "/images/google-business/lawn-mowing-fall-stripes-01.jpg",
-    alt: "Freshly mowed lawn with fall stripes by S.B. Landscaping",
-    focus: "50% 62%",
+    src: "/images/client-media/photos/optimized/lawn-maintenance-stripes-01.webp",
+    alt: "Fresh lawn maintenance stripes completed by S.B. Landscaping",
+    focus: "50% 58%",
     title: "Weekly & Biweekly Landscape Maintenance",
     desc: "Consistent mowing and property care that keeps lawns clean, striped, and well maintained.",
   },

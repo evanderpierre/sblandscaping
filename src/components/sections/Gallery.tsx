@@ -2,9 +2,17 @@
 
 import React from "react";
 import { EyebrowLabel } from "@/components/ui/design-system";
-import { Reveal, PhotoImg, ArrowButton, Icon } from "@/components/ui/primitives";
+import { Reveal, PhotoImg, ArrowButton } from "@/components/ui/primitives";
 
-type Project = { tag: string; title: string; src?: string; tone?: string; alt: string; focus?: string; loc?: string };
+type Project = {
+  tag: string;
+  title: string;
+  src: string;
+  alt: string;
+  focus?: string;
+  poster?: string;
+  mediaType?: "photo" | "video";
+};
 
 const PROJECTS: Project[] = [
   {
@@ -35,8 +43,72 @@ const PROJECTS: Project[] = [
     alt: "Rounded shrub trimming detail by S.B. Landscaping",
     focus: "50% 48%",
   },
-  { tag: "Garden Design & Plant Install", title: "Garden Bed Install", loc: "Woburn, MA", tone: "plant", alt: "Garden bed planting and landscape design" },
-  { tag: "Hardscape", title: "Walkway & Patio Install", loc: "Saugus, MA", tone: "hardscape", alt: "Residential hardscape walkway and patio" },
+  {
+    tag: "Lawn Care / Brand",
+    title: "Branded Lawn Care Finish",
+    src: "/images/client-media/photos/optimized/lawn-care-branded-yard-sign-01.webp",
+    alt: "Freshly maintained residential lawn with S.B. Landscaping yard sign",
+    focus: "50% 52%",
+  },
+  {
+    tag: "Lawn Maintenance",
+    title: "Fresh Summer Mowing Stripes",
+    src: "/images/client-media/photos/optimized/lawn-maintenance-stripes-01.webp",
+    alt: "Fresh lawn maintenance stripes completed by S.B. Landscaping",
+    focus: "50% 58%",
+  },
+  {
+    tag: "Plant Install",
+    title: "Garden Bed Planting",
+    src: "/images/client-media/photos/optimized/garden-bed-planting-01.webp",
+    alt: "Newly arranged hosta planting bed installed by S.B. Landscaping",
+    focus: "50% 60%",
+  },
+  {
+    tag: "Lawn Maintenance",
+    title: "Striped Backyard Finish",
+    src: "/images/client-media/photos/optimized/lawn-maintenance-striped-yard-02.webp",
+    alt: "Striped backyard lawn after maintenance by S.B. Landscaping",
+    focus: "50% 54%",
+  },
+  {
+    tag: "Lawn & Property Care",
+    title: "Maintained Lawn and Stone Border",
+    src: "/images/client-media/photos/optimized/lawn-maintenance-stone-wall-01.webp",
+    alt: "Maintained residential lawn beside an existing natural stone border",
+    focus: "50% 58%",
+  },
+  {
+    tag: "Mulch & Shrub Care",
+    title: "Finished Property Maintenance",
+    src: "/images/client-media/photos/optimized/mulch-shrub-maintenance-01.webp",
+    alt: "Fresh mulch beds and maintained shrubs with S.B. Landscaping yard sign",
+    focus: "50% 55%",
+  },
+  {
+    tag: "Recent Work · Video",
+    title: "Plant Installation in Progress",
+    src: "/images/client-media/videos/optimized/plant-installation-in-progress-01.mp4",
+    poster: "/images/client-media/videos/posters/plant-installation-in-progress-01.webp",
+    alt: "Video of the S.B. Landscaping crew installing hostas in a garden bed",
+    mediaType: "video",
+  },
+  {
+    tag: "Recent Work · Video",
+    title: "Finished Shrub Trimming",
+    src: "/images/client-media/videos/optimized/shrub-trimming-finished-01.mp4",
+    poster: "/images/client-media/videos/posters/shrub-trimming-finished-01.webp",
+    alt: "Video walkthrough of shaped shrubs and maintained lawn by S.B. Landscaping",
+    mediaType: "video",
+  },
+  {
+    tag: "Recent Work · Video",
+    title: "Shrub Trimming in Action",
+    src: "/images/client-media/videos/optimized/shrub-trimming-in-progress-01.mp4",
+    poster: "/images/client-media/videos/posters/shrub-trimming-in-progress-01.webp",
+    alt: "Video of S.B. Landscaping trimming and shaping an evergreen shrub",
+    mediaType: "video",
+  },
 ];
 
 function ProjectCard({ p }: { p: Project }) {
@@ -50,35 +122,26 @@ function ProjectCard({ p }: { p: Project }) {
       onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "var(--shadow-card-hover)"; e.currentTarget.style.transform = "translateY(-6px)"; }}
       onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "var(--shadow-sm)"; e.currentTarget.style.transform = "none"; }}
     >
-      <PhotoImg src={p.src} tone={p.tone} alt={p.alt} focus={p.focus} sizes="320px" style={{ position: "absolute", inset: 0, height: "100%" }} />
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(10,10,13,0) 45%, rgba(10,10,13,0.82) 100%)" }} />
-      <div style={{ position: "absolute", left: 22, bottom: 22, right: 22 }}>
+      {p.mediaType === "video" ? (
+        <video
+          controls
+          preload="none"
+          playsInline
+          poster={p.poster}
+          aria-label={p.alt}
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", background: "#101411" }}
+        >
+          <source src={p.src} type="video/mp4" />
+        </video>
+      ) : (
+        <PhotoImg src={p.src} alt={p.alt} focus={p.focus} sizes="320px" style={{ position: "absolute", inset: 0, height: "100%" }} />
+      )}
+      <div style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "linear-gradient(180deg, rgba(10,10,13,0) 45%, rgba(10,10,13,0.82) 100%)" }} />
+      <div style={{ position: "absolute", left: 22, bottom: p.mediaType === "video" ? 58 : 22, right: 22, pointerEvents: "none" }}>
         <div style={{ color: "var(--sb-flag-green)", fontSize: 11.5, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".04em", marginBottom: 8 }}>{p.tag}</div>
         <div className="ed-head" style={{ color: "#fff", fontSize: 22, marginBottom: 8 }}>{p.title}</div>
-        {p.loc && (
-          <span style={{ color: "rgba(245,245,242,0.85)", fontSize: 12.5, display: "flex", alignItems: "center", gap: 4 }}>
-            <Icon name="pin" size={13} /> {p.loc}
-          </span>
-        )}
+        {p.mediaType === "video" && <span className="project-video-note">Click to play · Sound off by default</span>}
       </div>
-    </div>
-  );
-}
-
-function BeforeAfterSlider() {
-  const [pos, setPos] = React.useState(50);
-  return (
-    <div style={{ position: "relative", height: 420, width: 320, flexShrink: 0, borderRadius: 20, overflow: "hidden", boxShadow: "var(--shadow-sm)", scrollSnapAlign: "start" }}>
-      <PhotoImg tone="cleanup" alt="Before — overgrown property" style={{ position: "absolute", inset: 0, height: "100%" }} />
-      <div style={{ position: "absolute", inset: 0, clipPath: `inset(0 0 0 ${pos}%)` }}>
-        <PhotoImg tone="lawn" alt="After — finished landscape" style={{ height: "100%" }} />
-      </div>
-      <span style={{ position: "absolute", left: 16, top: 16, background: "rgba(10,10,13,0.6)", color: "#fff", fontSize: 11.5, fontWeight: 700, padding: "5px 12px", borderRadius: 999 }}>BEFORE</span>
-      <span style={{ position: "absolute", right: 16, top: 16, background: "var(--sb-flag-green)", color: "#0A0A0D", fontSize: 11.5, fontWeight: 700, padding: "5px 12px", borderRadius: 999 }}>AFTER</span>
-      <div style={{ position: "absolute", top: 0, bottom: 0, left: `${pos}%`, width: 3, background: "#fff", boxShadow: "0 0 0 5px rgba(255,255,255,0.3)", transform: "translateX(-1.5px)", pointerEvents: "none" }} />
-      <input type="range" min="0" max="100" value={pos} onChange={(e) => setPos(Number(e.target.value))}
-        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0, cursor: "ew-resize", margin: 0 }} />
-      <div style={{ position: "absolute", left: 22, bottom: 22, color: "#fff", fontSize: 12.5, fontWeight: 600 }}>Drag to compare</div>
     </div>
   );
 }
@@ -107,8 +170,10 @@ export function Gallery() {
         padding: "4px clamp(20px,6vw,96px) 12px",
       }}>
         {PROJECTS.map((p) => <ProjectCard key={p.title} p={p} />)}
-        <BeforeAfterSlider />
       </div>
+      <style>{`
+        .project-video-note { color: rgba(245,245,242,.72); font-size: 10.5px; font-weight: 600; }
+      `}</style>
     </section>
   );
 }
