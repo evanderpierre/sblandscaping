@@ -58,7 +58,7 @@ export function ServiceArea() {
                 <path d="M118 54V286M270 54V286M422 54V286" strokeDasharray="3 9" />
               </g>
 
-              <ellipse cx="400" cy="140" rx="92" ry="82" fill="url(#service-halo)" />
+              <ellipse cx="323" cy="151" rx="70" ry="64" fill="url(#service-halo)" />
 
               <image
                 href="/images/service-area/massachusetts.svg"
@@ -71,29 +71,29 @@ export function ServiceArea() {
               />
 
               <g className="map-label-lines" fill="none" stroke="rgba(245,245,242,.34)" strokeWidth="1.2" vectorEffect="non-scaling-stroke">
-                <path d="M382 151 L318 116 L252 116" />
-                <path d="M399 143 L425 103 L456 103" />
-                <path d="M377 163 L335 183 L281 183" />
-                <path d="M413 173 L449 190 L493 190" />
+                <path d="M302 145 L276 116 L220 116" />
+                <path d="M327 137 L392 103 L446 103" />
+                <path d="M315 157 L293 184 L245 184" />
+                <path d="M345 170 L404 194 L465 194" />
               </g>
 
               <g className="map-secondary-marker">
-                <circle cx="399" cy="143" r="5" fill="#F5F5F2" stroke="#0A0A0D" strokeWidth="2" vectorEffect="non-scaling-stroke" />
-                <circle cx="377" cy="163" r="5" fill="#F5F5F2" stroke="#0A0A0D" strokeWidth="2" vectorEffect="non-scaling-stroke" />
-                <circle cx="413" cy="173" r="5" fill="#F5F5F2" stroke="#0A0A0D" strokeWidth="2" vectorEffect="non-scaling-stroke" />
+                <circle cx="327" cy="137" r="5" fill="#F5F5F2" stroke="#0A0A0D" strokeWidth="2" vectorEffect="non-scaling-stroke" />
+                <circle cx="315" cy="157" r="5" fill="#F5F5F2" stroke="#0A0A0D" strokeWidth="2" vectorEffect="non-scaling-stroke" />
+                <circle cx="345" cy="170" r="5" fill="#F5F5F2" stroke="#0A0A0D" strokeWidth="2" vectorEffect="non-scaling-stroke" />
               </g>
 
               <g className="map-primary-marker">
-                <circle cx="382" cy="151" r="17" fill="none" stroke="#33B462" strokeWidth="1.5" className="sa-ping" style={{ transformOrigin: "382px 151px" }} vectorEffect="non-scaling-stroke" />
-                <circle cx="382" cy="151" r="10" fill="#33B462" fillOpacity=".2" filter="url(#marker-glow)" />
-                <circle cx="382" cy="151" r="6.5" fill="#33B462" stroke="#F5F5F2" strokeWidth="2" vectorEffect="non-scaling-stroke" />
+                <circle cx="302" cy="145" r="17" fill="none" stroke="#33B462" strokeWidth="1.5" className="sa-ping" style={{ transformOrigin: "302px 145px" }} vectorEffect="non-scaling-stroke" />
+                <circle cx="302" cy="145" r="10" fill="#33B462" fillOpacity=".2" filter="url(#marker-glow)" />
+                <circle cx="302" cy="145" r="6.5" fill="#33B462" stroke="#F5F5F2" strokeWidth="2" vectorEffect="non-scaling-stroke" />
               </g>
 
               <g className="map-town-labels" fontFamily="var(--font-primary), sans-serif" fontSize="13" fontWeight="650" fill="rgba(245,245,242,.74)">
-                <text x="252" y="110" fill="#33B462" fontSize="14" fontWeight="800">WOBURN</text>
-                <text x="456" y="98">Wakefield</text>
-                <text x="281" y="178">Stoneham</text>
-                <text x="457" y="185">Saugus</text>
+                <text x="220" y="110" fill="#33B462" fontSize="14" fontWeight="800">WOBURN</text>
+                <text x="446" y="98">Wakefield</text>
+                <text x="245" y="179">Stoneham</text>
+                <text x="465" y="189">Saugus</text>
               </g>
 
               <g transform="translate(66 264)" opacity=".58">
